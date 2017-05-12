@@ -7,6 +7,6 @@ public class DadoTest {
 
 	@Test
 	public void testLimite() {
-		Assert.assertTrue(new Dado().tirar() < 7 && new Dado().tirar() > 0);
+		Assert.assertTrue(Dado.tirar() < 7 && Dado.tirar() > 0);
 	}
 }

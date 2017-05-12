@@ -6,6 +6,14 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class PaisTest {
+	
+	@Test
+	public void testCrearPais() {
+		
+		Pais pais = new Pais();
+		
+		Assert.assertEquals(pais.getCantFichas(), 1);
+	}
 
 	@Test
 	public void testPonerFichas() {
@@ -61,6 +69,7 @@ public class PaisTest {
 		pais.agregarLimite(pais2);
 		
 		Assert.assertTrue(pais.limita(pais2));
+		Assert.assertTrue(pais2.limita(pais));
 		
 	}
 }
