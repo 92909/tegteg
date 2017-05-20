@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Test;
 
+import application.Pais;
+
 public class PaisTest {
 	
 	@Test
@@ -46,7 +48,7 @@ public class PaisTest {
 		
 		pais.tranferir(pais2, 2);
 		
-		Assert.assertEquals(pais.getCantFichas(), 2);
+		Assert.assertEquals(pais.getCantFichas(), 3);
 		Assert.assertEquals(pais2.getCantFichas(), 3);
 		
 	}

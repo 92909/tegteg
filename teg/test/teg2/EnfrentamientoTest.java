@@ -5,6 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Test;
 
+import application.Carta;
+import application.Enfrentamiento;
+import application.Pais;
+
 public class EnfrentamientoTest {
 
 	@Test

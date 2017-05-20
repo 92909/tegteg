@@ -5,6 +5,9 @@ package teg2;
 import org.junit.Assert;
 import org.junit.Test;
 
+import application.Jugador;
+import application.Pais;
+
 
 public class JugadorTest {
 
