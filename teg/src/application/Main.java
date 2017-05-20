@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.effect.Glow;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
@@ -17,6 +18,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	
+	private Teg teg = new Teg();
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -40,9 +44,9 @@ public class Main extends Application {
 						ClipboardContent clipboardContent = new ClipboardContent();
 						clipboardContent.putString(text.getText());
 						circle.startDragAndDrop(TransferMode.ANY).setContent(clipboardContent);
+						
+						circle.setEffect(new Glow(.9));
 						event.consume();
-						System.out.println(event.getSource());
-						System.out.println(event.getTarget());
 					}
 					
 				});
@@ -61,11 +65,10 @@ public class Main extends Application {
 				        Dragboard db = event.getDragboard();
 				        boolean success = false;
 				        if (db.hasString()) {
-				            text.setText(text.getText()+1);
-				            System.out.println(event.getSource());
-							System.out.println(event.getTarget());
+				            text.setText(db.getString());
 				            success = true;
 				        }
+				        teg.mostrarPais(text.getText());
 				        event.setDropCompleted(success);
 				        event.consume();
 				    }
