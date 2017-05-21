@@ -30,11 +30,13 @@ public class Main extends Application {
 			
 			Circle[] circles = new Circle[4];
 			Text[] texts = new Text[4];
+			Text[] fichas = new Text[4];
 			Color[] colors = {Color.RED, Color.GREENYELLOW, Color.BLUE, Color.LIGHTBLUE};
 			String[] nombres = {"Paraguay", "Brasil", "Argentina", "Uruguay"};
 			
-			for (int i=0; i<4; i++){
-				circles[i] = new Circle(100+100*(i%2), 100+100*(i/2), 50, colors[i]);
+			for (int i=0; i<teg.getPaises().size(); i++){
+				fichas[i] = new Text(100+100*(i%2), 100+100*(i/2), teg.getPaises().get(i).getCantFichas().toString()); 
+				circles[i] = new Circle(100+100*(i%2), 100+100*(i/2), 30, colors[i]);
 				texts[i] = new Text(50+100*(i%2), 50+100*(i/2), nombres[i]);
 				final Circle circle = circles[i];
 				final Text text= texts[i];
@@ -45,7 +47,6 @@ public class Main extends Application {
 						clipboardContent.putString(text.getText());
 						circle.startDragAndDrop(TransferMode.ANY).setContent(clipboardContent);
 						
-						circle.setEffect(new Glow(.9));
 						event.consume();
 					}
 					
@@ -68,15 +69,15 @@ public class Main extends Application {
 				            text.setText(db.getString());
 				            success = true;
 				        }
-				        teg.mostrarPais(text.getText());
 				        event.setDropCompleted(success);
 				        event.consume();
 				    }
 				});
+				list.add(circles[i]);
+				list.add(texts[i]);
+				list.add(fichas[i]);
 			}
 			
-			list.addAll(circles);
-			list.addAll(texts);
 			
 			// Creating a Scene by passing the group object, height and width
 			Scene scene = new Scene(group, 600, 300);

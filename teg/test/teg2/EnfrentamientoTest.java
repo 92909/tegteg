@@ -42,7 +42,7 @@ public class EnfrentamientoTest {
 	@Test
 	public void test5() throws Exception{
 		Enfrentamiento enfrentamiento = new Enfrentamiento(new Pais(5), new Pais(1), new Carta("clasico"));
-		if (enfrentamiento.pelear() == enfrentamiento.getBatalla.getEjercitosDefensa.length){
+		if (enfrentamiento.pelear() == enfrentamiento.getBatalla().getEjercitosDefensa().length){
 			Assert.assertEquals( enfrentamiento.getPaisDefensa().getJugador(), enfrentamiento.getPaisAtaque().getJugador());
 		}
 	}
