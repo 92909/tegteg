@@ -1,12 +1,14 @@
 package application;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.effect.Glow;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
@@ -28,24 +30,37 @@ public class Main extends Application {
 			Group group = new Group();
 			ObservableList<Node> list = group.getChildren();
 			
-			Circle[] circles = new Circle[4];
-			Text[] texts = new Text[4];
-			Text[] fichas = new Text[4];
-			Color[] colors = {Color.RED, Color.GREENYELLOW, Color.BLUE, Color.LIGHTBLUE};
+			Text evento = new Text(300, 100, "");
+			list.add(evento);
+			List<Circle> circles = new ArrayList<>();
+			List<Text> texts = new ArrayList<>();
+			List<Text> fichas = new ArrayList<>();
+			List<Text> dados = new ArrayList<>();
+			for (int i=0; i<8; i++){
+				dados.add(new Text(300+100*(i%4), 200+100*(i%4), ""));
+			}
+			List<Color> colors = new ArrayList<>();
+			colors.add(Color.RED);
+			colors.add(Color.BLUE);
+			colors.add(Color.GREENYELLOW);
+			colors.add(Color.LIGHTBLUE);
 			String[] nombres = {"Paraguay", "Brasil", "Argentina", "Uruguay"};
 			
 			for (int i=0; i<teg.getPaises().size(); i++){
-				fichas[i] = new Text(100+100*(i%2), 100+100*(i/2), teg.getPaises().get(i).getCantFichas().toString()); 
-				circles[i] = new Circle(100+100*(i%2), 100+100*(i/2), 30, colors[i]);
-				texts[i] = new Text(50+100*(i%2), 50+100*(i/2), nombres[i]);
-				final Circle circle = circles[i];
-				final Text text= texts[i];
+				fichas.add(new Text(100+100*(i%2), 100+100*(i/2), teg.getPaises().get(i).getCantFichas().toString())); 
+				circles.add(new Circle(100+100*(i%2), 100+100*(i/2), 40, colors.get(i)));
+				texts.add(new Text(50+100*(i%2), 50+100*(i/2), nombres[i]));
+				final Circle circle = circles.get(i);
+				final Text text= texts.get(i);
+				final Text ficha= fichas.get(i);
 				circle.setOnDragDetected(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
 						ClipboardContent clipboardContent = new ClipboardContent();
 						clipboardContent.putString(text.getText());
 						circle.startDragAndDrop(TransferMode.ANY).setContent(clipboardContent);
+						
+						teg.setPais1(teg.getPaises().get(circles.indexOf(circle)));
 						
 						event.consume();
 					}
@@ -66,16 +81,28 @@ public class Main extends Application {
 				        Dragboard db = event.getDragboard();
 				        boolean success = false;
 				        if (db.hasString()) {
-				            text.setText(db.getString());
+				        	teg.setPais2(teg.getPaises().get(circles.indexOf(circle)));
+				        	try {
+								List<int[]> list = teg.jugar();
+								for (int i=0; i<list.get(1).length; i++){
+									dados.get(i).setText(String.valueOf(list.get(1)[i]));
+								}
+								for (int i=0; i<list.get(2).length; i++){
+									dados.get(i+list.get(1).length).setText(String.valueOf(list.get(2)[i]));
+								}
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+				        	evento.setText(texts.get(teg.getPaises().indexOf(teg.getPais1())).getText() + " ataco a " + texts.get(teg.getPaises().indexOf(teg.getPais2())).getText());
 				            success = true;
 				        }
 				        event.setDropCompleted(success);
 				        event.consume();
 				    }
 				});
-				list.add(circles[i]);
-				list.add(texts[i]);
-				list.add(fichas[i]);
+				list.add(circle);
+				list.add(text);
+				list.add(ficha);
 			}
 			
 			

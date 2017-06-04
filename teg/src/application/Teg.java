@@ -11,10 +11,10 @@ public class Teg {
 	private Pais pais2;
 
 	public Teg() {
-		paises.add(new Pais(3));
-		paises.add(new Pais(3));
-		paises.add(new Pais(3));
-		paises.add(new Pais(3));
+		paises.add(new Pais(8));
+		paises.add(new Pais(8));
+		paises.add(new Pais(8));
+		paises.add(new Pais(8));
 	}
 
 	public List<Pais> getPaises() {
@@ -39,5 +39,15 @@ public class Teg {
 
 	public void setPais2(Pais pais2) {
 		this.pais2 = pais2;
+	}
+
+	public List<int[]> jugar() throws Exception {
+		Enfrentamiento enfrentamiento = new Enfrentamiento(pais1, pais2, new Carta("clasico"));
+		enfrentamiento.pelear();
+		List<int[]> list = new ArrayList<>();
+		list.add(enfrentamiento.getEjercitoAtaque());
+		list.add(enfrentamiento.getEjercitoDefensa());
+		return list;
+		
 	}
 }

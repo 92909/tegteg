@@ -10,7 +10,7 @@ public class Pais {
 	}
 
 	public Pais(int i) {
-		
+		cantidadDeFichas = i;
 	}
 
 	public Object getCantFichas() {
