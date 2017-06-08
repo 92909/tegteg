@@ -59,4 +59,12 @@ public class Enfrentamiento {
 		return a;
 	}
 
+	public Object getBatalla() {
+		
+		
+		return null;
+	}
+
+
+
 }
