@@ -5,16 +5,18 @@ import java.util.ArrayList;
 public class Pais {
 	int cantidadDeFichas;
 	ArrayList<Pais> paisesLim=new ArrayList<Pais>();
-	public Pais(){
-		cantidadDeFichas=1;
-	}
+	Jugador j;
 
 	public Pais(int i) {
 		cantidadDeFichas = i;
 	}
 
+	public Pais() {
+		cantidadDeFichas=1;
+	}
+
 	public Object getCantFichas() {
-		
+		;
 		return cantidadDeFichas;
 	}
 
@@ -53,6 +55,11 @@ public class Pais {
 	public void setJugador(Jugador jugador) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Jugador  getJugador() {
+		// TODO Auto-generated method stub
+		return j;
 	}
 
 }
