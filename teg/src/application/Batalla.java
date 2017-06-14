@@ -1,8 +1,8 @@
 package application;
 
 public class Batalla {
-	int[] jugador1 = new int[3];
-	int[] jugador2 = new int[3];
+	int[] jugador1;
+	int[] jugador2;
 
 	public Batalla(int[] is, int[] is2) {
 		this.jugador1 = ordenar(is);
@@ -41,5 +41,9 @@ public class Batalla {
 			return a;
 		}
 
+	}
+
+	public int cantBatallas() {
+		return Math.min(jugador1.length, jugador2.length);
 	}
 }

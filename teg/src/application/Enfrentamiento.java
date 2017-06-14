@@ -4,7 +4,7 @@ public class Enfrentamiento {
 	
 	Pais a;
 	Pais d;
-	 
+	Batalla batalla;
 	Carta c;
 
 	public Enfrentamiento(Pais pais, Pais pais2, Carta carta) {
@@ -24,6 +24,9 @@ public class Enfrentamiento {
 		}else{
 			throw new Exception();
 		}
+		
+		tirarDados(f);
+		
 		return f;
 	}
 
@@ -36,12 +39,24 @@ public class Enfrentamiento {
 		}else{
 			throw new Exception();
 		}
+		
+		tirarDados(f);
+		
 		return f;
 	}
 
-	public Object pelear() {
+	private void tirarDados(int[] v) {
+		for (int i=0; i<v.length; i++){
+			v[i] = Dado.tirar();
+		}
 		
-		return null;
+	}
+
+	public int pelear() throws Exception {
+		batalla = new Batalla(getEjercitoAtaque(), getEjercitoDefensa());
+		d.cantidadDeFichas -= batalla.batallar();
+		a.cantidadDeFichas -= batalla.cantBatallas()-batalla.batallar();
+		return batalla.batallar();
 	}
 
 	
@@ -59,10 +74,10 @@ public class Enfrentamiento {
 		return a;
 	}
 
-	public Object getBatalla() {
+	public Batalla getBatalla() {
 		
 		
-		return null;
+		return batalla;
 	}
 
 

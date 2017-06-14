@@ -30,29 +30,7 @@ public class Main extends Application {
 			Group group = new Group();
 			ObservableList<Node> list = group.getChildren();
 			
-			Text evento = new Text(300, 100, "");
-			list.add(evento);
-			List<Circle> circles = new ArrayList<>();
-			List<Text> texts = new ArrayList<>();
-			List<Text> fichas = new ArrayList<>();
-			List<Text> dados = new ArrayList<>();
-			for (int i=0; i<8; i++){
-				dados.add(new Text(300+100*(i%4), 200+100*(i%4), ""));
-			}
-			List<Color> colors = new ArrayList<>();
-			colors.add(Color.RED);
-			colors.add(Color.BLUE);
-			colors.add(Color.GREENYELLOW);
-			colors.add(Color.LIGHTBLUE);
-			String[] nombres = {"Paraguay", "Brasil", "Argentina", "Uruguay"};
-			
-			for (int i=0; i<teg.getPaises().size(); i++){
-				fichas.add(new Text(100+100*(i%2), 100+100*(i/2), teg.getPaises().get(i).getCantFichas().toString())); 
-				circles.add(new Circle(100+100*(i%2), 100+100*(i/2), 40, colors.get(i)));
-				texts.add(new Text(50+100*(i%2), 50+100*(i/2), nombres[i]));
-				final Circle circle = circles.get(i);
-				final Text text= texts.get(i);
-				final Text ficha= fichas.get(i);
+			for (int i=0; i<teg.paises.size(); i++){
 				circle.setOnDragDetected(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
@@ -84,12 +62,15 @@ public class Main extends Application {
 				        	teg.setPais2(teg.getPaises().get(circles.indexOf(circle)));
 				        	try {
 								List<int[]> list = teg.jugar();
-								for (int i=0; i<list.get(1).length; i++){
-									dados.get(i).setText(String.valueOf(list.get(1)[i]));
+								for (int i=0; i<teg.getPaises().size(); i++){
+									fichas.get(i).setText(teg.getPaises().get(i).getCantFichas()+"");
 								}
-								for (int i=0; i<list.get(2).length; i++){
-									dados.get(i+list.get(1).length).setText(String.valueOf(list.get(2)[i]));
-								}
+//								for (int i=0; i<list.get(1).length; i++){
+//									dados.get(i).setText(String.valueOf(list.get(1)[i]));
+//								}
+//								for (int i=0; i<list.get(2).length; i++){
+//									dados.get(i+list.get(1).length).setText(String.valueOf(list.get(2)[i]));
+//								}
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
@@ -100,9 +81,14 @@ public class Main extends Application {
 				        event.consume();
 				    }
 				});
-				list.add(circle);
-				list.add(text);
-				list.add(ficha);
+				circle.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+					@Override
+					public void handle(MouseEvent mouseEvent) {
+						circle.setCenterX(circle.getCenterX()+1);
+						
+					}
+				});
 			}
 			
 			

@@ -3,11 +3,18 @@ package application;
 import java.util.ArrayList;
 
 public class Pais {
+	static Pais ARGENTINA = new Pais();
+	static Pais BRASIL = new Pais();
+	static Pais URUGUAY = new Pais();
+	static Pais PARAGUAY = new Pais();
+	
+	String nombre;
 	int cantidadDeFichas;
 	ArrayList<Pais> paisesLim=new ArrayList<Pais>();
 	Jugador j;
 
 	public Pais(int i) {
+		nombre = "pais";
 		cantidadDeFichas = i;
 	}
 
@@ -15,8 +22,7 @@ public class Pais {
 		cantidadDeFichas=1;
 	}
 
-	public Object getCantFichas() {
-		;
+	public int getCantFichas() {
 		return cantidadDeFichas;
 	}
 
