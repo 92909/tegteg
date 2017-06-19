@@ -3,10 +3,10 @@ package application;
 import java.util.ArrayList;
 
 public class Pais {
-	static Pais ARGENTINA = new Pais();
-	static Pais BRASIL = new Pais();
-	static Pais URUGUAY = new Pais();
-	static Pais PARAGUAY = new Pais();
+	static Pais ARGENTINA = new Pais("Argentina", 10);
+	static Pais BRASIL = new Pais("Brasil", 10);
+	static Pais URUGUAY = new Pais("Uruguay", 10);
+	static Pais PARAGUAY = new Pais("Paraguay", 10);
 	
 	String nombre;
 	int cantidadDeFichas;
@@ -17,9 +17,15 @@ public class Pais {
 		nombre = "pais";
 		cantidadDeFichas = i;
 	}
+	
+	public Pais(String nombre, int i) {
+		this.nombre = nombre;
+		cantidadDeFichas = i;
+	}
 
 	public Pais() {
 		cantidadDeFichas=1;
+		nombre = "pais";
 	}
 
 	public int getCantFichas() {

@@ -14,11 +14,11 @@ public class VistaPais {
 	
 	Text fichas;
 	
-	public VistaPais(int centroX, int centroY, Pais pais) {
+	public VistaPais(int centroX, int centroY, Pais pais, Color color) {
 		this.pais = pais;
-		circle = new Circle(centroX, centroY, 10);
-		circle.setFill(Color.RED);
-		nombre = new Text(centroX-10, centroY-10, pais.nombre);
+		circle = new Circle(centroX, centroY, 40);
+		circle.setFill(color);
+		nombre = new Text(centroX-50, centroY-50, pais.nombre);
 		fichas = new Text(centroX, centroY, String.valueOf(pais.cantidadDeFichas));
 	}
 }

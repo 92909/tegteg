@@ -3,6 +3,8 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.paint.Color;
+
 public class Teg {
 
 	List<VistaPais> paises = new ArrayList<>();
@@ -11,10 +13,10 @@ public class Teg {
 	Pais pais2;
 
 	public Teg() {
-		paises.add(new VistaPais(10, 10, Pais.PARAGUAY));
-		paises.add(new VistaPais(30, 10, Pais.BRASIL));
-		paises.add(new VistaPais(10, 30, Pais.ARGENTINA));
-		paises.add(new VistaPais(30, 30, Pais.URUGUAY));
+		paises.add(new VistaPais(100, 100, Pais.PARAGUAY, Color.RED));
+		paises.add(new VistaPais(200, 100, Pais.BRASIL, Color.GREENYELLOW));
+		paises.add(new VistaPais(100, 200, Pais.ARGENTINA, Color.BLUE));
+		paises.add(new VistaPais(200, 200, Pais.URUGUAY, Color.LIGHTBLUE));
 	}
 
 	public List<int[]> jugar() throws Exception {
