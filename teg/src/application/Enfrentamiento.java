@@ -54,6 +54,10 @@ public class Enfrentamiento {
 
 	public int pelear() throws Exception {
 		
+		if (a.j.equals(d.j)){
+			throw new Exception("no se puede. mismo jugador");
+		}
+		
 		if (!a.limita(d)){
 			throw new Exception("no limita");
 		}

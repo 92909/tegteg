@@ -1,5 +1,6 @@
 package application;
 
+import java.io.FileInputStream;
 import java.util.List;
 
 import javafx.application.Application;
@@ -8,6 +9,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
@@ -22,10 +25,17 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Group group = new Group();
+			Image image = new Image(new FileInputStream("teg.jpg"));
+			ImageView imageView = new ImageView(image);
+			Group group = new Group(imageView);
 			ObservableList<Node> list = group.getChildren();
-			Text evento = new Text(300, 100, "");
-			Text resultados = new Text(300, 200, "");
+			imageView.setX(200);
+			imageView.setY(0);
+			imageView.setFitHeight(600);
+			imageView.setFitWidth(600);
+			imageView.setPreserveRatio(false);
+			Text evento = new Text(800, 100, "");
+			Text resultados = new Text(800, 200, "");
 
 			for (VistaPais vistaPais : teg.paises) {
 
@@ -59,11 +69,11 @@ public class Main extends Application {
 								teg.paises.get(i).fichas.setText(teg.paises.get(i).pais.getCantFichas() + "");
 							}
 							StringBuilder builder = new StringBuilder();
-							for(int i=0; i< list.get(0).length; i++){
+							for (int i = 0; i < list.get(0).length; i++) {
 								builder.append(list.get(0)[i]).append(" ");
 							}
 							builder.append("\n\n");
-							for(int i=0; i< list.get(1).length; i++){
+							for (int i = 0; i < list.get(1).length; i++) {
 								builder.append(list.get(1)[i]).append(" ");
 							}
 							resultados.setText(builder.toString());
@@ -91,7 +101,9 @@ public class Main extends Application {
 			list.add(evento);
 			list.add(resultados);
 
-			Scene scene = new Scene(group, 600, 300);
+			Scene scene = new Scene(group, 1000, 600);
+			primaryStage.setX(0);
+			primaryStage.setY(0);
 			primaryStage.setTitle("TEG");
 			primaryStage.setScene(scene);
 			primaryStage.show();
