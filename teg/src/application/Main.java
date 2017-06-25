@@ -22,15 +22,14 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			// Creating a Group
 			Group group = new Group();
 			ObservableList<Node> list = group.getChildren();
-			Text evento = new Text(500, 500, "");
+			Text evento = new Text(300, 100, "");
+			Text resultados = new Text(300, 200, "");
 
-			for (int i = 0; i < teg.paises.size(); i++) {
-				VistaPais vistaPais = teg.paises.get(i);
+			for (VistaPais vistaPais : teg.paises) {
 
-				teg.paises.get(i).circle.setOnDragDetected(new EventHandler<MouseEvent>() {
+				vistaPais.circle.setOnDragDetected(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
 						ClipboardContent clipboardContent = new ClipboardContent();
@@ -43,45 +42,39 @@ public class Main extends Application {
 					}
 
 				});
-				teg.paises.get(i).circle.setOnDragOver(new EventHandler<DragEvent>() {
+				vistaPais.circle.setOnDragOver(new EventHandler<DragEvent>() {
 					@Override
 					public void handle(DragEvent event) {
-						// Dragboard db = event.getDragboard();
-						// if (db.hasString()) {
 						event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-						// }
 						event.consume();
 					}
 				});
-				teg.paises.get(i).circle.setOnDragDropped(new EventHandler<DragEvent>() {
+				vistaPais.circle.setOnDragDropped(new EventHandler<DragEvent>() {
 					@Override
 					public void handle(DragEvent event) {
-						// Dragboard db = event.getDragboard();
-						// boolean success = false;
-						// if (db.hasString()) {
 						teg.pais2 = vistaPais.pais;
 						try {
 							List<int[]> list = teg.jugar();
 							for (int i = 0; i < teg.paises.size(); i++) {
 								teg.paises.get(i).fichas.setText(teg.paises.get(i).pais.getCantFichas() + "");
 							}
-							// for (int i=0; i<list.get(1).length; i++){
-							// dados.get(i).setText(String.valueOf(list.get(1)[i]));
-							// }
-							// for (int i=0; i<list.get(2).length; i++){
-							// dados.get(i+list.get(1).length).setText(String.valueOf(list.get(2)[i]));
-							// }
+							StringBuilder builder = new StringBuilder();
+							for(int i=0; i< list.get(0).length; i++){
+								builder.append(list.get(0)[i]).append(" ");
+							}
+							builder.append("\n\n");
+							for(int i=0; i< list.get(1).length; i++){
+								builder.append(list.get(1)[i]).append(" ");
+							}
+							resultados.setText(builder.toString());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
 						evento.setText(teg.pais1.nombre + " ataco a " + teg.pais2.nombre);
-						// success = true;
-						// }
-						// event.setDropCompleted(success);
 						event.consume();
 					}
 				});
-				teg.paises.get(i).circle.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				vistaPais.circle.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 					@Override
 					public void handle(MouseEvent mouseEvent) {
@@ -96,6 +89,7 @@ public class Main extends Application {
 				list.add(vistaPais.fichas);
 			}
 			list.add(evento);
+			list.add(resultados);
 
 			Scene scene = new Scene(group, 600, 300);
 			primaryStage.setTitle("TEG");

@@ -23,8 +23,8 @@ public class Teg {
 		Enfrentamiento enfrentamiento = new Enfrentamiento(pais1, pais2, new Carta("clasico"));
 		enfrentamiento.pelear();
 		List<int[]> list = new ArrayList<>();
-//		list.add(enfrentamiento.getEjercitoAtaque());
-//		list.add(enfrentamiento.getEjercitoDefensa());
+		list.add(enfrentamiento.batalla.jugador1);
+		list.add(enfrentamiento.batalla.jugador2);
 		return list;
 		
 	}
