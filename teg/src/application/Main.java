@@ -1,6 +1,5 @@
 package application;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javafx.application.Application;
@@ -11,111 +10,90 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-	
+
 	private Teg teg = new Teg();
-	
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			// Creating a Group
 			Group group = new Group();
 			ObservableList<Node> list = group.getChildren();
-			
 			Text evento = new Text(300, 100, "");
-			list.add(evento);
-			List<Circle> circles = new ArrayList<>();
-			List<Text> texts = new ArrayList<>();
-			List<Text> fichas = new ArrayList<>();
-			List<Text> dados = new ArrayList<>();
-			for (int i=0; i<8; i++){
-				dados.add(new Text(300+100*(i%4), 200+100*(i%4), ""));
-			}
-			List<Color> colors = new ArrayList<>();
-			colors.add(Color.RED);
-			colors.add(Color.BLUE);
-			colors.add(Color.GREENYELLOW);
-			colors.add(Color.LIGHTBLUE);
-			String[] nombres = {"Paraguay", "Brasil", "Argentina", "Uruguay"};
-			
-			for (int i=0; i<teg.getPaises().size(); i++){
-				fichas.add(new Text(100+100*(i%2), 100+100*(i/2), teg.getPaises().get(i).getCantFichas().toString())); 
-				circles.add(new Circle(100+100*(i%2), 100+100*(i/2), 40, colors.get(i)));
-				texts.add(new Text(50+100*(i%2), 50+100*(i/2), nombres[i]));
-				final Circle circle = circles.get(i);
-				final Text text= texts.get(i);
-				final Text ficha= fichas.get(i);
-				circle.setOnDragDetected(new EventHandler<MouseEvent>() {
+			Text resultados = new Text(300, 200, "");
+
+			for (VistaPais vistaPais : teg.paises) {
+
+				vistaPais.circle.setOnDragDetected(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
 						ClipboardContent clipboardContent = new ClipboardContent();
-						clipboardContent.putString(text.getText());
-						circle.startDragAndDrop(TransferMode.ANY).setContent(clipboardContent);
-						
-						teg.setPais1(teg.getPaises().get(circles.indexOf(circle)));
-						
+						clipboardContent.putString(vistaPais.pais.nombre);
+						vistaPais.circle.startDragAndDrop(TransferMode.ANY).setContent(clipboardContent);
+
+						teg.pais1 = vistaPais.pais;
+
 						event.consume();
 					}
-					
+
 				});
-				circle.setOnDragOver(new EventHandler<DragEvent>() {
-				    @Override 
-				    public void handle(DragEvent event) {
-				        Dragboard db = event.getDragboard();
-				        if (db.hasString()) {
-				            event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-				        }
-				        event.consume();
-				    }
+				vistaPais.circle.setOnDragOver(new EventHandler<DragEvent>() {
+					@Override
+					public void handle(DragEvent event) {
+						event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+						event.consume();
+					}
 				});
-				circle.setOnDragDropped(new EventHandler<DragEvent>() {
-				    @Override public void handle(DragEvent event) {
-				        Dragboard db = event.getDragboard();
-				        boolean success = false;
-				        if (db.hasString()) {
-				        	teg.setPais2(teg.getPaises().get(circles.indexOf(circle)));
-				        	try {
-								List<int[]> list = teg.jugar();
-								for (int i=0; i<list.get(1).length; i++){
-									dados.get(i).setText(String.valueOf(list.get(1)[i]));
-								}
-								for (int i=0; i<list.get(2).length; i++){
-									dados.get(i+list.get(1).length).setText(String.valueOf(list.get(2)[i]));
-								}
-							} catch (Exception e) {
-								e.printStackTrace();
+				vistaPais.circle.setOnDragDropped(new EventHandler<DragEvent>() {
+					@Override
+					public void handle(DragEvent event) {
+						teg.pais2 = vistaPais.pais;
+						try {
+							List<int[]> list = teg.jugar();
+							for (int i = 0; i < teg.paises.size(); i++) {
+								teg.paises.get(i).fichas.setText(teg.paises.get(i).pais.getCantFichas() + "");
 							}
-				        	evento.setText(texts.get(teg.getPaises().indexOf(teg.getPais1())).getText() + " ataco a " + texts.get(teg.getPaises().indexOf(teg.getPais2())).getText());
-				            success = true;
-				        }
-				        event.setDropCompleted(success);
-				        event.consume();
-				    }
+							StringBuilder builder = new StringBuilder();
+							for(int i=0; i< list.get(0).length; i++){
+								builder.append(list.get(0)[i]).append(" ");
+							}
+							builder.append("\n\n");
+							for(int i=0; i< list.get(1).length; i++){
+								builder.append(list.get(1)[i]).append(" ");
+							}
+							resultados.setText(builder.toString());
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						evento.setText(teg.pais1.nombre + " ataco a " + teg.pais2.nombre);
+						event.consume();
+					}
 				});
-				list.add(circle);
-				list.add(text);
-				list.add(ficha);
+				vistaPais.circle.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+					@Override
+					public void handle(MouseEvent mouseEvent) {
+						vistaPais.circle.setCenterX(vistaPais.circle.getCenterX() + 1);
+						System.out.println(vistaPais.pais.nombre);
+
+					}
+				});
+
+				list.add(vistaPais.circle);
+				list.add(vistaPais.nombre);
+				list.add(vistaPais.fichas);
 			}
-			
-			
-			// Creating a Scene by passing the group object, height and width
+			list.add(evento);
+			list.add(resultados);
+
 			Scene scene = new Scene(group, 600, 300);
-
-			// Setting the title to Stage.
 			primaryStage.setTitle("TEG");
-
-			// Adding the scene to Stage
 			primaryStage.setScene(scene);
-
-			// Displaying the contents of the stage
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

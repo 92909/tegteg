@@ -7,7 +7,7 @@ public class Jugador {
 	}
 
 	public void atacar(Pais pais, Pais pais2) {
-		// TODO Auto-generated method stub
+		Enfrentamiento e=new Enfrentamiento(pais,pais2,new Carta("Clasico"));
 		
 	}
 
