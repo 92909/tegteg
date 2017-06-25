@@ -66,6 +66,24 @@ public class Pais {
 	static Pais JAPON = new Pais("Paraguay", 10);
 	static Pais VIETNAM = new Pais("Paraguay", 10);
 	
+	static{
+		ARGENTINA.agregarLimite(BRASIL);
+		ARGENTINA.agregarLimite(URUGUAY);
+		ARGENTINA.agregarLimite(BOLIVIA);
+		ARGENTINA.agregarLimite(CHILE);
+		CHILE.agregarLimite(COLOMBIA);
+		CHILE.agregarLimite(BOLIVIA);
+		CHILE.agregarLimite(BRASIL);
+		URUGUAY.agregarLimite(BRASIL);
+		URUGUAY.agregarLimite(PARAGUAY);
+		BOLIVIA.agregarLimite(BRASIL);
+		BOLIVIA.agregarLimite(PARAGUAY);
+		BRASIL.agregarLimite(VENEZUELA);
+		BRASIL.agregarLimite(COLOMBIA);
+		COLOMBIA.agregarLimite(VENEZUELA);
+		
+		
+	}
 	
 	String nombre;
 	int cantidadDeFichas;
