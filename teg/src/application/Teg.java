@@ -45,7 +45,7 @@ public class Teg {
 			paises.get(i).pais.setJugador(jugadores.get(i%jugadores.size()));
 			
 			
-			paises.get(i).setJ(jugadores.get(i%jugadores.size()));
+			paises.get(i).setColor(jugadores.get(i%jugadores.size()));
 			
 		}
 		

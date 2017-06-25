@@ -14,22 +14,21 @@ public class VistaPais {
 	
 	Text fichas;
 	
-	Jugador j;
+	
 	
 	public VistaPais(int centroX, int centroY, Pais pais) {
 		this.pais = pais;
 		circle = new Circle(centroX, centroY, 40);
 		
-		circle.setFill(j.color);
+		
 		nombre = new Text(centroX-50, centroY-50, pais.nombre);
 		fichas = new Text(centroX, centroY, String.valueOf(pais.cantidadDeFichas));
 	}
 
-	public Jugador getJ() {
-		return j;
-	}
-
-	public void setJ(Jugador j) {
-		this.j = j;
+	
+	public void setColor(Jugador j) {
+		
+		circle.setFill(j.color);
+		
 	}
 }
