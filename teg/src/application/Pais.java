@@ -71,6 +71,7 @@ public class Pais {
 		ARGENTINA.agregarLimite(URUGUAY);
 		ARGENTINA.agregarLimite(BOLIVIA);
 		ARGENTINA.agregarLimite(CHILE);
+		ARGENTINA.agregarLimite(PARAGUAY);
 		CHILE.agregarLimite(COLOMBIA);
 		CHILE.agregarLimite(BOLIVIA);
 		CHILE.agregarLimite(BRASIL);
@@ -85,6 +86,7 @@ public class Pais {
 		
 	}
 	
+	
 	String nombre;
 	int cantidadDeFichas;
 	ArrayList<Pais> paisesLim=new ArrayList<Pais>();
@@ -98,6 +100,7 @@ public class Pais {
 	public Pais(String nombre, int i) {
 		this.nombre = nombre;
 		cantidadDeFichas = i;
+		
 	}
 
 	public Pais() {
@@ -140,6 +143,7 @@ public class Pais {
 		
 		
 	}
+	
 
 	public void setJugador(Jugador jugador) {
 		// TODO Auto-generated method stub
