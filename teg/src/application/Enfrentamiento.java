@@ -53,9 +53,18 @@ public class Enfrentamiento {
 	}
 
 	public int pelear() throws Exception {
+		
+		if (!a.limita(d)){
+			throw new Exception("no limita");
+		}
+		
 		batalla = new Batalla(getEjercitoAtaque(), getEjercitoDefensa());
 		d.cantidadDeFichas -= batalla.batallar();
 		a.cantidadDeFichas -= batalla.cantBatallas()-batalla.batallar();
+		
+		if (d.cantidadDeFichas == 0){
+			a.tranferir(d, 1);
+		}
 		return batalla.batallar();
 	}
 

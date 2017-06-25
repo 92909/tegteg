@@ -67,10 +67,10 @@ public class Main extends Application {
 								builder.append(list.get(1)[i]).append(" ");
 							}
 							resultados.setText(builder.toString());
+							evento.setText(teg.pais1.nombre + " ataco a " + teg.pais2.nombre);
 						} catch (Exception e) {
-							e.printStackTrace();
+							evento.setText(e.getMessage());
 						}
-						evento.setText(teg.pais1.nombre + " ataco a " + teg.pais2.nombre);
 						event.consume();
 					}
 				});
