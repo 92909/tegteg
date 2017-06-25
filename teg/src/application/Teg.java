@@ -16,7 +16,12 @@ public class Teg {
 		paises.add(new VistaPais(100, 100, Pais.PARAGUAY, Color.RED));
 		paises.add(new VistaPais(200, 100, Pais.BRASIL, Color.GREENYELLOW));
 		paises.add(new VistaPais(100, 200, Pais.ARGENTINA, Color.BLUE));
-		paises.add(new VistaPais(200, 200, Pais.URUGUAY, Color.LIGHTBLUE));
+		paises.add(new VistaPais(200, 200, Pais.URUGUAY, Color.BEIGE));
+		paises.add(new VistaPais(300, 100, Pais.CHILE, Color.DEEPPINK));
+		paises.add(new VistaPais(300, 200, Pais.BOLIVIA, Color.LAWNGREEN));
+		paises.add(new VistaPais(300, 300, Pais.VENEZUELA, Color.STEELBLUE));
+		paises.add(new VistaPais(200, 300, Pais.COLOMBIA, Color.ANTIQUEWHITE));
+		
 	}
 
 	public List<int[]> jugar() throws Exception {
