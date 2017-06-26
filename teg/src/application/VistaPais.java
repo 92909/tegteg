@@ -1,6 +1,5 @@
 package application;
 
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
@@ -14,7 +13,7 @@ public class VistaPais {
 	
 	Text fichas;
 	
-	
+	Text misiles;
 	
 	public VistaPais(int centroX, int centroY, Pais pais) {
 		this.pais = pais;
@@ -23,6 +22,7 @@ public class VistaPais {
 		
 		nombre = new Text(centroX-50, centroY-50, pais.nombre);
 		fichas = new Text(centroX, centroY, String.valueOf(pais.cantidadDeFichas));
+		misiles = new Text(centroX, centroY+10, String.valueOf(pais.misiles));
 	}
 
 	

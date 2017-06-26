@@ -13,6 +13,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.text.Text;
@@ -43,7 +45,11 @@ public class Main extends Application {
 					@Override
 					public void handle(MouseEvent event) {
 						ClipboardContent clipboardContent = new ClipboardContent();
-						clipboardContent.putString(vistaPais.pais.nombre);
+						if (event.getButton().equals(MouseButton.PRIMARY)) {
+							clipboardContent.putString("izquierdo");
+						} else {
+							clipboardContent.putString("derecho");
+						}
 						vistaPais.circle.startDragAndDrop(TransferMode.ANY).setContent(clipboardContent);
 
 						teg.pais1 = vistaPais.pais;
@@ -63,21 +69,32 @@ public class Main extends Application {
 					@Override
 					public void handle(DragEvent event) {
 						teg.pais2 = vistaPais.pais;
+						Dragboard db = event.getDragboard();
 						try {
-							List<int[]> list = teg.jugar();
-							for (int i = 0; i < teg.paises.size(); i++) {
-								teg.paises.get(i).fichas.setText(teg.paises.get(i).pais.getCantFichas() + "");
+							if (db.getString().equals("derecho")) {
+								int danio = teg.tirarMisil();
+								for (int i = 0; i < teg.paises.size(); i++) {
+									teg.paises.get(i).misiles.setText(teg.paises.get(i).pais.misiles + "");
+									teg.paises.get(i).fichas.setText(teg.paises.get(i).pais.getCantFichas() + "");
+									resultados.setText("daño " + danio);
+									evento.setText(teg.pais1.nombre + " lanzo un misil a " + teg.pais2.nombre);
+								}
+							} else {
+								List<int[]> list = teg.jugar();
+								for (int i = 0; i < teg.paises.size(); i++) {
+									teg.paises.get(i).fichas.setText(teg.paises.get(i).pais.getCantFichas() + "");
+								}
+								StringBuilder builder = new StringBuilder();
+								for (int i = 0; i < list.get(0).length; i++) {
+									builder.append(list.get(0)[i]).append(" ");
+								}
+								builder.append("\n\n");
+								for (int i = 0; i < list.get(1).length; i++) {
+									builder.append(list.get(1)[i]).append(" ");
+								}
+								resultados.setText(builder.toString());
+								evento.setText(teg.pais1.nombre + " ataco a " + teg.pais2.nombre);
 							}
-							StringBuilder builder = new StringBuilder();
-							for (int i = 0; i < list.get(0).length; i++) {
-								builder.append(list.get(0)[i]).append(" ");
-							}
-							builder.append("\n\n");
-							for (int i = 0; i < list.get(1).length; i++) {
-								builder.append(list.get(1)[i]).append(" ");
-							}
-							resultados.setText(builder.toString());
-							evento.setText(teg.pais1.nombre + " ataco a " + teg.pais2.nombre);
 						} catch (Exception e) {
 							evento.setText(e.getMessage());
 						}
@@ -97,6 +114,7 @@ public class Main extends Application {
 				list.add(vistaPais.circle);
 				list.add(vistaPais.nombre);
 				list.add(vistaPais.fichas);
+				list.add(vistaPais.misiles);
 			}
 			list.add(evento);
 			list.add(resultados);

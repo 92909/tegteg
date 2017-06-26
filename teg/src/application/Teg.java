@@ -60,4 +60,9 @@ public class Teg {
 		return list;
 		
 	}
+
+	public int tirarMisil() throws Exception {
+		return pais1.tirarMisil(pais2);
+		
+	}
 }
