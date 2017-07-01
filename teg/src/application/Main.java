@@ -11,12 +11,17 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -28,14 +33,46 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			Image image = new Image(new FileInputStream("teg.jpg"));
+//			Image image = new Image(getClass().getResourceAsStream("/teg.jpg"));
 			ImageView imageView = new ImageView(image);
-			Group group = new Group(imageView);
-			ObservableList<Node> list = group.getChildren();
 			imageView.setX(200);
 			imageView.setY(0);
 			imageView.setFitHeight(600);
 			imageView.setFitWidth(600);
 			imageView.setPreserveRatio(false);
+			Image image2 = new Image(new FileInputStream("paca.png"));
+//			Image image2 = new Image(getClass().getResourceAsStream("/paca.png"));
+			ImageView imageView2 = new ImageView(image2);
+			imageView2.setX(400);
+			imageView2.setY(200);
+			imageView2.setFitHeight(200);
+			imageView2.setFitWidth(200);
+			imageView2.setPreserveRatio(false);
+			
+			WritableImage wImage = new WritableImage((int)image2.getWidth(), (int)image2.getHeight()); 
+			PixelReader pixelReader = image2.getPixelReader();
+
+			PixelWriter writer = wImage.getPixelWriter();
+			for (int y = 0; y < (int)image2.getHeight(); y++) {
+				for (int x = 0; x < (int)image2.getWidth(); x++) {
+					Color color = pixelReader.getColor(x, y);
+					writer.setColor(x, y, !color.isOpaque() || color.equals(Color.BLACK) ? color : Color.AQUA  );
+
+
+				}
+			}
+			ImageView imageView3 = new ImageView(wImage);
+			imageView3.setX(500);
+			imageView3.setY(200);
+			imageView3.setFitHeight(200);
+			imageView3.setFitWidth(200);
+			imageView3.setPreserveRatio(false);
+
+			Group group = new Group(imageView);
+			ObservableList<Node> list = group.getChildren();
+			BorderPane borderPane = new BorderPane(imageView3);
+			list.add(borderPane);
+			list.add(imageView2);
 			Text evento = new Text(800, 100, "");
 			Text resultados = new Text(800, 200, "");
 
