@@ -143,7 +143,7 @@ public class Pais {
 	}
 
 	public void setJugador(Jugador jugador) {
-		// TODO Auto-generated method stub
+		j = jugador;
 
 	}
 

@@ -1,13 +1,19 @@
 package application;
 
-import javafx.scene.shape.Circle;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
 public class VistaPais {
+	
+	static String[] colores = {"NORMALES", "AMARILLO", "AZUL", "CELESTE", "NARANJA", "ROJO", "VERDE"};
 
 	Pais pais;
 	
-	Circle circle;
+	ImageView imagen;
 	
 	Text nombre;
 	
@@ -15,9 +21,18 @@ public class VistaPais {
 	
 	Text misiles;
 	
+	private String ruta;
+	
 	public VistaPais(int centroX, int centroY, Pais pais) {
 		this.pais = pais;
-		circle = new Circle(centroX, centroY, 40);
+		try {
+			ruta = "AMERICA_DEL_SUR\\NORMALES\\arg.png";
+			imagen = new ImageView(new Image(new FileInputStream(ruta)));
+			imagen.setX(centroX);
+			imagen.setY(centroY);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 		
 		nombre = new Text(centroX-50, centroY-50, pais.nombre);
@@ -27,8 +42,17 @@ public class VistaPais {
 
 	
 	public void setColor(Jugador j) {
-		
-		circle.setFill(j.color);
+		for (String color : colores){
+			if (ruta.contains(color)){
+				ruta = ruta.replace(color, colores[j.numero]);
+				break;
+			}
+		}
+		try {
+			imagen.setImage(new Image(new FileInputStream(ruta)));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 	}
 }

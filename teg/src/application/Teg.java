@@ -2,16 +2,12 @@ package application;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
-import javafx.scene.paint.Color;
 
 public class Teg {
 
 	List<VistaPais> paises = new ArrayList<>();
-	Random r=new Random();
-	Pais pais1;
-	Pais pais2;
+	VistaPais pais1;
+	VistaPais pais2;
 	int cantidadDeJugadores=2;
 	
 	public Teg() {
@@ -23,18 +19,12 @@ public class Teg {
 		paises.add(new VistaPais(300, 200, Pais.BOLIVIA));
 		paises.add(new VistaPais(300, 300, Pais.VENEZUELA));
 		paises.add(new VistaPais(200, 300, Pais.COLOMBIA));
-		int b=r.nextInt(3);
 		
 		ArrayList<Jugador>jugadores=new ArrayList<Jugador>();
-		ArrayList<Color> colores=new ArrayList<Color>();
-		colores.add(Color.RED);
-		colores.add(Color.GRAY);
-		colores.add(Color.GREEN);
-		colores.add(Color.BLUE);
 		
 		for(int i=0;i<cantidadDeJugadores;i++){
 			
-			jugadores.add(new Jugador(colores.get(i)));
+			jugadores.add(new Jugador(i));
 			
 			
 			
@@ -62,7 +52,7 @@ public class Teg {
 	}
 
 	public int tirarMisil() throws Exception {
-		return pais1.tirarMisil(pais2);
+		return pais1.pais.tirarMisil(pais2.pais);
 		
 	}
 }

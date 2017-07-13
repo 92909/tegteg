@@ -2,27 +2,27 @@ package application;
 
 public class Enfrentamiento {
 	
-	Pais a;
-	Pais d;
+	VistaPais a;
+	VistaPais d;
 	Batalla batalla;
 	Carta c;
 
-	public Enfrentamiento(Pais pais, Pais pais2, Carta carta) {
-		 a = pais;
-		 d = pais2;
+	public Enfrentamiento(VistaPais pais, VistaPais pais2, Carta carta) {
+		a = pais;
+		d = pais2;
 		c=carta;
 		
 	}
 
 	public int[] getEjercitoAtaque() throws Exception {
 		int[] f;
-		if (a.cantidadDeFichas >3){
+		if (a.pais.cantidadDeFichas >3){
 			 f = new int[3+c.vientoAFavor()];
 			 
-		}else if( a.cantidadDeFichas >1){
-			 f = new int[a.cantidadDeFichas-1+c.vientoAFavor() ];
+		}else if( a.pais.cantidadDeFichas >1){
+			 f = new int[a.pais.cantidadDeFichas-1+c.vientoAFavor() ];
 		}else{
-			throw new Exception();
+			throw new Exception("no hay fichas");
 		}
 		
 		tirarDados(f);
@@ -32,12 +32,12 @@ public class Enfrentamiento {
 
 	public int[] getEjercitoDefensa() throws Exception {
 		int[] f;
-		if (d.cantidadDeFichas > 3){
+		if (d.pais.cantidadDeFichas > 3){
 			 f = new int[3+c.nieve()];
-		}else if( d.cantidadDeFichas >= 1){
-			 f = new int[d.cantidadDeFichas+c.nieve()];
+		}else if( d.pais.cantidadDeFichas >= 1){
+			 f = new int[d.pais.cantidadDeFichas+c.nieve()];
 		}else{
-			throw new Exception();
+			throw new Exception("no hay fichas");
 		}
 		
 		tirarDados(f);
@@ -54,20 +54,23 @@ public class Enfrentamiento {
 
 	public int pelear() throws Exception {
 		
-		if (a.j.equals(d.j)){
+		if (a.pais.j.equals(d.pais.j)){
 			throw new Exception("no se puede. mismo jugador");
 		}
 		
-		if (!a.limita(d)){
+		if (!a.pais.limita(d.pais)){
 			throw new Exception("no limita");
 		}
 		
 		batalla = new Batalla(getEjercitoAtaque(), getEjercitoDefensa());
-		d.cantidadDeFichas -= batalla.batallar();
-		a.cantidadDeFichas -= batalla.cantBatallas()-batalla.batallar();
+		d.pais.cantidadDeFichas -= batalla.batallar();
+		a.pais.cantidadDeFichas -= batalla.cantBatallas()-batalla.batallar();
 		
-		if (d.cantidadDeFichas == 0){
-			a.tranferir(d, 1);
+		if (d.pais.cantidadDeFichas == 0){
+			a.pais.tranferir(d.pais, 1);
+			d.pais.setJugador(a.pais.j);
+			d.setColor(d.pais.j);
+			
 		}
 		return batalla.batallar();
 	}
@@ -77,12 +80,12 @@ public class Enfrentamiento {
 		
 	
 
-	public Pais getPaisDefensa() {
+	public VistaPais getPaisDefensa() {
 		
 		return d;
 	}
 
-	public Pais getPaisAtaque() {
+	public VistaPais getPaisAtaque() {
 		
 		return a;
 	}

@@ -11,17 +11,12 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.PixelReader;
-import javafx.scene.image.PixelWriter;
-import javafx.scene.image.WritableImage;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -38,47 +33,16 @@ public class Main extends Application {
 			imageView.setX(200);
 			imageView.setY(0);
 			imageView.setFitHeight(600);
-			imageView.setFitWidth(600);
-			imageView.setPreserveRatio(false);
-			Image image2 = new Image(new FileInputStream("paca.png"));
-//			Image image2 = new Image(getClass().getResourceAsStream("/paca.png"));
-			ImageView imageView2 = new ImageView(image2);
-			imageView2.setX(400);
-			imageView2.setY(200);
-			imageView2.setFitHeight(200);
-			imageView2.setFitWidth(200);
-			imageView2.setPreserveRatio(false);
-			
-			WritableImage wImage = new WritableImage((int)image2.getWidth(), (int)image2.getHeight()); 
-			PixelReader pixelReader = image2.getPixelReader();
-
-			PixelWriter writer = wImage.getPixelWriter();
-			for (int y = 0; y < (int)image2.getHeight(); y++) {
-				for (int x = 0; x < (int)image2.getWidth(); x++) {
-					Color color = pixelReader.getColor(x, y);
-					writer.setColor(x, y, !color.isOpaque() || color.equals(Color.BLACK) ? color : Color.AQUA  );
-
-
-				}
-			}
-			ImageView imageView3 = new ImageView(wImage);
-			imageView3.setX(500);
-			imageView3.setY(200);
-			imageView3.setFitHeight(200);
-			imageView3.setFitWidth(200);
-			imageView3.setPreserveRatio(false);
+			imageView.setFitWidth(800);
 
 			Group group = new Group(imageView);
 			ObservableList<Node> list = group.getChildren();
-			BorderPane borderPane = new BorderPane(imageView3);
-			list.add(borderPane);
-			list.add(imageView2);
-			Text evento = new Text(800, 100, "");
-			Text resultados = new Text(800, 200, "");
+			Text evento = new Text(1000, 100, "");
+			Text resultados = new Text(1000, 200, "");
 
 			for (VistaPais vistaPais : teg.paises) {
 
-				vistaPais.circle.setOnDragDetected(new EventHandler<MouseEvent>() {
+				vistaPais.imagen.setOnDragDetected(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
 						ClipboardContent clipboardContent = new ClipboardContent();
@@ -87,25 +51,25 @@ public class Main extends Application {
 						} else {
 							clipboardContent.putString("derecho");
 						}
-						vistaPais.circle.startDragAndDrop(TransferMode.ANY).setContent(clipboardContent);
+						vistaPais.imagen.startDragAndDrop(TransferMode.ANY).setContent(clipboardContent);
 
-						teg.pais1 = vistaPais.pais;
+						teg.pais1 = vistaPais;
 
 						event.consume();
 					}
 
 				});
-				vistaPais.circle.setOnDragOver(new EventHandler<DragEvent>() {
+				vistaPais.imagen.setOnDragOver(new EventHandler<DragEvent>() {
 					@Override
 					public void handle(DragEvent event) {
 						event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
 						event.consume();
 					}
 				});
-				vistaPais.circle.setOnDragDropped(new EventHandler<DragEvent>() {
+				vistaPais.imagen.setOnDragDropped(new EventHandler<DragEvent>() {
 					@Override
 					public void handle(DragEvent event) {
-						teg.pais2 = vistaPais.pais;
+						teg.pais2 = vistaPais;
 						Dragboard db = event.getDragboard();
 						try {
 							if (db.getString().equals("derecho")) {
@@ -114,7 +78,7 @@ public class Main extends Application {
 									teg.paises.get(i).misiles.setText(teg.paises.get(i).pais.misiles + "");
 									teg.paises.get(i).fichas.setText(teg.paises.get(i).pais.getCantFichas() + "");
 									resultados.setText("daño " + danio);
-									evento.setText(teg.pais1.nombre + " lanzo un misil a " + teg.pais2.nombre);
+									evento.setText(teg.pais1.pais.nombre + " lanzo un misil a " + teg.pais2.pais.nombre);
 								}
 							} else {
 								List<int[]> list = teg.jugar();
@@ -130,25 +94,26 @@ public class Main extends Application {
 									builder.append(list.get(1)[i]).append(" ");
 								}
 								resultados.setText(builder.toString());
-								evento.setText(teg.pais1.nombre + " ataco a " + teg.pais2.nombre);
+								evento.setText(teg.pais1.pais.nombre + " ataco a " + teg.pais2.pais.nombre);
 							}
 						} catch (Exception e) {
 							evento.setText(e.getMessage());
+							resultados.setText("");
 						}
 						event.consume();
 					}
 				});
-				vistaPais.circle.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				vistaPais.imagen.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 					@Override
 					public void handle(MouseEvent mouseEvent) {
-						vistaPais.circle.setCenterX(vistaPais.circle.getCenterX() + 1);
+						vistaPais.imagen.setX(vistaPais.imagen.getX()+1);
 						System.out.println(vistaPais.pais.nombre);
 
 					}
 				});
 
-				list.add(vistaPais.circle);
+				list.add(vistaPais.imagen);
 				list.add(vistaPais.nombre);
 				list.add(vistaPais.fichas);
 				list.add(vistaPais.misiles);

@@ -1,24 +1,22 @@
 package application;
 
-
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-
 public class Jugador  {
 	String nombre;
-	Color color;
+	int numero;
 	public Jugador(int i) {
-		
+		numero = i;
 	}
-	public Jugador(Color c) {
-		color=c;
+	
+	public int getNumero() {
+		return numero;
 	}
 
-	public Color getColor() {
-		return color;
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
-	public void setColor(Color color) {
-		this.color = color;
+
+	public void setColor(int numero) {
+		this.numero = numero;
 	}
 	public String getNombre() {
 		return nombre;
@@ -27,14 +25,5 @@ public class Jugador  {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public void atacar(Pais pais, Pais pais2) {
-		Enfrentamiento e=new Enfrentamiento(pais,pais2,new Carta("Clasico"));
-		
-	}
-
-
-	
-	
 
 }
