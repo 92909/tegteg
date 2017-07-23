@@ -5,7 +5,7 @@ public class Batalla {
 	int[] jugador2;
 
 	public Batalla(int[] is, int[] is2) {
-		this.jugador1 = ordenar(is);
+		this.jugador1 = ordenar(is);;
 		this.jugador2 = ordenar(is2);
 	}
 
