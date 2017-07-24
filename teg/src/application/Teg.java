@@ -11,14 +11,14 @@ public class Teg {
 	int cantidadDeJugadores=2;
 	
 	public Teg() {
-		paises.add(new VistaPais(100, 100, Pais.PARAGUAY));
-		paises.add(new VistaPais(200, 100, Pais.BRASIL));
-		paises.add(new VistaPais(100, 200, Pais.ARGENTINA));
-		paises.add(new VistaPais(200, 200, Pais.URUGUAY));
-		paises.add(new VistaPais(300, 100, Pais.CHILE));
-		paises.add(new VistaPais(300, 200, Pais.BOLIVIA));
-		paises.add(new VistaPais(300, 300, Pais.VENEZUELA));
-		paises.add(new VistaPais(200, 300, Pais.COLOMBIA));
+		paises.add(new VistaPais(100, 100, Pais.NUEVA_ZELANDIA, "OCEANIA/AZUL/NUEVA_ZELANDIA.png", 1235, 1082));
+		paises.add(new VistaPais(200, 100, Pais.AUSTRALIA, "OCEANIA/AZUL/AUSTRALIA.png", 1244,849 ));
+		paises.add(new VistaPais(100, 200, Pais.ALASKA, "AMERICA_DEL_NORTE/AMARILLO/ALASKA.png", 48, 58));
+		paises.add(new VistaPais(200, 200, Pais.TAZMANIA, "OCEANIA/ROJO/TASMANIA.png", 1346, 1044));
+		paises.add(new VistaPais(300, 100, Pais.ARGENTINA, "AMERICA_DEL_SUR/NORMALES/arg.png", 290, 952));
+		paises.add(new VistaPais(300, 200, Pais.BOLIVIA, "OCEANIA/AZUL/NUEVA_ZELANDIA.png", 1235, 1082));
+		paises.add(new VistaPais(300, 300, Pais.VENEZUELA, "OCEANIA/AZUL/NUEVA_ZELANDIA.png", 1235, 1082));
+		paises.add(new VistaPais(200, 300, Pais.COLOMBIA, "OCEANIA/ROJO/NUEVA_ZELANDIA.png", 1235, 1082));
 		
 		ArrayList<Jugador>jugadores=new ArrayList<Jugador>();
 		
