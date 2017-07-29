@@ -1,6 +1,5 @@
 package application;
 
-import java.io.FileInputStream;
 import java.util.List;
 
 import javafx.application.Application;
@@ -11,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
@@ -24,20 +24,22 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+	public static double offsetX = 200;
+	public static double offsetY = 0;
+	public static double escala = .5;
+	
 	private Teg teg = new Teg();
 	boolean activo = false;
 	int turno=0;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Image image = new Image(new FileInputStream("teg.jpg"));
-			// Image image = new
-			// Image(getClass().getResourceAsStream("/teg.jpg"));
+			Image image = new Image(getClass().getResourceAsStream("/teg.jpg"));
 			ImageView imageView = new ImageView(image);
-			imageView.setX(200);
-			imageView.setY(0);
-			imageView.setFitHeight(600);
-			imageView.setFitWidth(800);
+			imageView.setX(offsetX);
+			imageView.setY(offsetY);
+			imageView.setFitHeight(image.getHeight()*escala);
+			imageView.setFitWidth(image.getWidth()*escala);
 			Button reagrupar = new Button("Reagrupar");
 			Label turn=new Label();
 			
@@ -68,7 +70,7 @@ public class Main extends Application {
 			Text resultados = new Text(1000, 200, "");
 
 			for (VistaPais vistaPais : teg.paises) {
-
+				vistaPais.imagen.setEffect(new Glow(0));
 				vistaPais.imagen.setOnDragDetected(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
@@ -86,11 +88,30 @@ public class Main extends Application {
 					}
 
 				});
+				vistaPais.imagen.setOnMouseEntered(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent event) {
+						((Glow)vistaPais.imagen.getEffect()).setLevel(.5);
+					}
+				});
 				vistaPais.imagen.setOnDragOver(new EventHandler<DragEvent>() {
 					@Override
 					public void handle(DragEvent event) {
+						((Glow)vistaPais.imagen.getEffect()).setLevel(.5);
 						event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
 						event.consume();
+					}
+				});
+				vistaPais.imagen.setOnDragExited(new EventHandler<DragEvent>() {
+					@Override
+					public void handle(DragEvent event) {
+						((Glow)vistaPais.imagen.getEffect()).setLevel(0);
+					}
+				});
+				vistaPais.imagen.setOnMouseExited(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent event) {
+						((Glow)vistaPais.imagen.getEffect()).setLevel(0);
 					}
 				});
 				vistaPais.imagen.setOnDragDropped(new EventHandler<DragEvent>() {

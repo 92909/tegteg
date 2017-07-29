@@ -17,9 +17,9 @@ public class Turno {
 		
 	}
 	public void crearTurno(VistaPais pais1,VistaPais pais2,Carta carta){
-		do{
+//		do{
 			this.enfrentar(pais1,pais2,carta);
-		}while("reagrupar"!=button.getValue);
+//		}while("reagrupar"!=button.getValue);
 		this.reagrupar();
 		this.tomarCarta();
 	}
