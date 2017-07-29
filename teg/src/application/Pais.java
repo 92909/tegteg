@@ -65,6 +65,10 @@ public class Pais {
 	static Pais KAMCHATKA = new Pais("Paraguay", 10);
 	static Pais JAPON = new Pais("Paraguay", 10);
 	static Pais VIETNAM = new Pais("Paraguay", 10);
+	
+	static Pais AUSTRALIA = new Pais("Australia", 10);
+	static Pais NUEVA_ZELANDIA = new Pais("Nueva Zelandia", 10);
+	static Pais TAZMANIA = new Pais("Tazmania", 10);
 
 	static {
 		ARGENTINA.agregarLimite(BRASIL);
