@@ -9,6 +9,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
@@ -23,18 +25,43 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 	private Teg teg = new Teg();
-
+	boolean activo = false;
+	int turno=0;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			Image image = new Image(new FileInputStream("teg.jpg"));
-//			Image image = new Image(getClass().getResourceAsStream("/teg.jpg"));
+			// Image image = new
+			// Image(getClass().getResourceAsStream("/teg.jpg"));
 			ImageView imageView = new ImageView(image);
 			imageView.setX(200);
 			imageView.setY(0);
 			imageView.setFitHeight(600);
 			imageView.setFitWidth(800);
+			Button reagrupar = new Button("Reagrupar");
+			Label turn=new Label();
+			
+			turn.setLayoutX(100);
+			EventHandler<MouseEvent> reagr = new EventHandler<MouseEvent>() {
 
+				@Override
+				public void handle(MouseEvent event) {
+					if("Reagrupar".equals(reagrupar.getText())){
+					activo = true;
+					reagrupar.setText("Fin turno");
+					}
+					else if("Fin turno".equals(reagrupar.getText())){
+						turno++;
+						turn.setText(String.valueOf(turno));
+						
+						reagrupar.setText("Reagrupar");
+					}
+
+				}
+
+			};
+
+			reagrupar.setOnMouseClicked(reagr);
 			Group group = new Group(imageView);
 			ObservableList<Node> list = group.getChildren();
 			Text evento = new Text(1000, 100, "");
@@ -70,6 +97,18 @@ public class Main extends Application {
 					@Override
 					public void handle(DragEvent event) {
 						teg.pais2 = vistaPais;
+
+						if (activo) {
+
+							if (teg.pais1.pais.limita(teg.pais2.pais)
+									&& (teg.pais1.pais.j.numero == teg.pais2.pais.j.numero)) {
+								teg.pais1.pais.tranferir(teg.pais2.pais, 1);
+								teg.pais1.fichas.setText(String.valueOf(teg.pais1.pais.getCantFichas()));
+								teg.pais2.fichas.setText(String.valueOf(teg.pais2.pais.getCantFichas()));
+
+							}
+							return;
+						}
 						Dragboard db = event.getDragboard();
 						try {
 							if (db.getString().equals("derecho")) {
@@ -78,7 +117,8 @@ public class Main extends Application {
 									teg.paises.get(i).misiles.setText(teg.paises.get(i).pais.misiles + "");
 									teg.paises.get(i).fichas.setText(teg.paises.get(i).pais.getCantFichas() + "");
 									resultados.setText("daño " + danio);
-									evento.setText(teg.pais1.pais.nombre + " lanzo un misil a " + teg.pais2.pais.nombre);
+									evento.setText(
+											teg.pais1.pais.nombre + " lanzo un misil a " + teg.pais2.pais.nombre);
 								}
 							} else {
 								List<int[]> list = teg.jugar();
@@ -95,7 +135,9 @@ public class Main extends Application {
 								}
 								resultados.setText(builder.toString());
 								evento.setText(teg.pais1.pais.nombre + " ataco a " + teg.pais2.pais.nombre);
+
 							}
+
 						} catch (Exception e) {
 							evento.setText(e.getMessage());
 							resultados.setText("");
@@ -107,7 +149,7 @@ public class Main extends Application {
 
 					@Override
 					public void handle(MouseEvent mouseEvent) {
-						vistaPais.imagen.setX(vistaPais.imagen.getX()+1);
+						vistaPais.imagen.setX(vistaPais.imagen.getX() + 1);
 						System.out.println(vistaPais.pais.nombre);
 
 					}
@@ -117,10 +159,12 @@ public class Main extends Application {
 				list.add(vistaPais.nombre);
 				list.add(vistaPais.fichas);
 				list.add(vistaPais.misiles);
+
 			}
 			list.add(evento);
 			list.add(resultados);
-
+			list.add(reagrupar);
+			list.add(turn);
 			Scene scene = new Scene(group, 1000, 600);
 			primaryStage.setX(0);
 			primaryStage.setY(0);
