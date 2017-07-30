@@ -46,11 +46,7 @@ public class VistaPais {
 //				break;
 //			}
 //		}
-//		try {
-//			imagen.setImage(new Image(new FileInputStream(ruta)));
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		}
+//		imagen.setImage(new Image(getClass().getResourceAsStream(ruta)));
 		
 	}
 }

@@ -69,7 +69,13 @@ public class Pais {
 	
 	static Pais AUSTRALIA = new Pais("Australia", 10);
 	static Pais NUEVA_ZELANDIA = new Pais("Nueva Zelandia", 10);
-	static Pais TAZMANIA = new Pais("Tazmania", 10);
+	static Pais TASMANIA = new Pais("Tasmania", 10);
+	static Pais SUMATRA = new Pais("Sumatra", 10);
+	static Pais FILIPINAS = new Pais("Filipinas", 10);
+	static Pais TONGA = new Pais("Tonga", 10);
+	
+	static Pais SUDAFRICA = new Pais("Sudafrica", 10);
+	static Pais MAURITANIA = new Pais("Mauritania", 10);;
 
 	static {
 		ARGENTINA.agregarLimite(BRASIL);
@@ -216,7 +222,7 @@ public class Pais {
 		lista.add(ISRAEL);lista.add(ITALIA);lista.add(JAMAICA);lista.add(JAPON);lista.add(KAMCHATKA);lista.add(LABRADOR);lista.add(LASVEGAS);
 		lista.add(MALASIA);lista.add(MEXICO);lista.add(NICARAGUA);lista.add(NORUEGA);lista.add(NUEVA_ZELANDIA);lista.add(NUEVAYORK);
 		lista.add(OREGON);lista.add(PARAGUAY);lista.add(POLONIA);lista.add(PORTUGAL);lista.add(RUSIA);lista.add(SERBIA);lista.add(SIBERIA);
-		lista.add(TAZMANIA);lista.add(TERRNOVA);lista.add(TURQUIA);lista.add(UCRANIA);lista.add(URUGUAY);lista.add(VENEZUELA);
+		lista.add(TASMANIA);lista.add(TERRNOVA);lista.add(TURQUIA);lista.add(UCRANIA);lista.add(URUGUAY);lista.add(VENEZUELA);
 		lista.add(VIETNAM);
 		Random r=new Random();
 		
