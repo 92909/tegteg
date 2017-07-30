@@ -30,7 +30,7 @@ public class Main extends Application {
 	
 	private Teg teg = new Teg();
 	boolean activo = false;
-	int turno=0;
+	 static int turno=0;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -53,6 +53,9 @@ public class Main extends Application {
 					reagrupar.setText("Fin turno");
 					}
 					else if("Fin turno".equals(reagrupar.getText())){
+						if(turno>Pais.cantidadDeJugadores) {
+							turno=0;
+						}
 						turno++;
 						turn.setText(String.valueOf(turno));
 						
