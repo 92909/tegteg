@@ -1,7 +1,5 @@
 package application;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -24,17 +22,15 @@ public class VistaPais {
 	
 	public VistaPais(int centroX, int centroY, Pais pais, String ruta, int posX, int posY) {
 		this.pais = pais;
-		try {
-			this.ruta = ruta;
-			Image image = new Image(new FileInputStream(ruta));
-			imagen = new ImageView(image);
-			imagen.setX(Main.offsetX+ posX*Main.escala);
-			imagen.setY(Main.offsetY+ posY*Main.escala);
-			imagen.setFitWidth(image.getWidth()*Main.escala);
-			imagen.setFitHeight(image.getHeight()*Main.escala);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		
+		this.ruta = ruta;
+		Image image = new Image(getClass().getResourceAsStream(ruta));
+		imagen = new ImageView(image);
+		imagen.setX(Main.offsetX+ posX*Main.escala);
+		imagen.setY(Main.offsetY+ posY*Main.escala);
+		imagen.setFitWidth(image.getWidth()*Main.escala);
+		imagen.setFitHeight(image.getHeight()*Main.escala);
+		
 		
 		
 		nombre = new Text(centroX-50, centroY-50, pais.nombre);
