@@ -1,15 +1,12 @@
 package application;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
 public class VistaPais {
 	
-	static String[] colores = {"NORMALES", "AMARILLO", "AZUL", "CELESTE", "NARANJA", "ROJO", "VERDE"};
+	static String[] colores = { "AMARILLO", "AZUL", "CELESTE", "NARANJA", "ROJO", "VERDE"};
 
 	Pais pais;
 	
@@ -23,16 +20,17 @@ public class VistaPais {
 	
 	private String ruta;
 	
-	public VistaPais(int centroX, int centroY, Pais pais) {
+	public VistaPais(int centroX, int centroY, Pais pais, String ruta, int posX, int posY) {
 		this.pais = pais;
-		try {
-			ruta = "AMERICA_DEL_SUR\\NORMALES\\arg.png";
-			imagen = new ImageView(new Image(new FileInputStream(ruta)));
-			imagen.setX(centroX);
-			imagen.setY(centroY);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		
+		this.ruta = ruta;
+		Image image = new Image(getClass().getResourceAsStream(ruta));
+		imagen = new ImageView(image);
+		imagen.setX(Main.offsetX+ posX*Main.escala);
+		imagen.setY(Main.offsetY+ posY*Main.escala);
+		imagen.setFitWidth(image.getWidth()*Main.escala);
+		imagen.setFitHeight(image.getHeight()*Main.escala);
+		
 		
 		
 		nombre = new Text(centroX-50, centroY-50, pais.nombre);
@@ -42,17 +40,17 @@ public class VistaPais {
 
 	
 	public void setColor(Jugador j) {
-		for (String color : colores){
-			if (ruta.contains(color)){
-				ruta = ruta.replace(color, colores[j.numero]);
-				break;
-			}
-		}
-		try {
-			imagen.setImage(new Image(new FileInputStream(ruta)));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+//		for (String color : colores){
+//			if (ruta.contains(color)){
+//				ruta = ruta.replace(color, colores[j.numero]);
+//				break;
+//			}
+//		}
+//		try {
+//			imagen.setImage(new Image(new FileInputStream(ruta)));
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		}
 		
 	}
 }
