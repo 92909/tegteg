@@ -1,6 +1,7 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Pais {
 	static Pais ARGENTINA = new Pais("Argentina", 10);
@@ -68,7 +69,13 @@ public class Pais {
 	
 	static Pais AUSTRALIA = new Pais("Australia", 10);
 	static Pais NUEVA_ZELANDIA = new Pais("Nueva Zelandia", 10);
-	static Pais TAZMANIA = new Pais("Tazmania", 10);
+	static Pais TASMANIA = new Pais("Tasmania", 10);
+	static Pais SUMATRA = new Pais("Sumatra", 10);
+	static Pais FILIPINAS = new Pais("Filipinas", 10);
+	static Pais TONGA = new Pais("Tonga", 10);
+	
+	static Pais SUDAFRICA = new Pais("Sudafrica", 10);
+	static Pais MAURITANIA = new Pais("Mauritania", 10);;
 
 	static {
 		ARGENTINA.agregarLimite(BRASIL);
@@ -94,6 +101,7 @@ public class Pais {
 	ArrayList<Pais> paisesLim = new ArrayList<Pais>();
 	Jugador j;
 	int misiles;
+	static int cantidadDeJugadores;
 
 	public Pais(int i) {
 		nombre = "pais";
@@ -199,5 +207,44 @@ public class Pais {
 		}
 		return 3-distancia(pais)+1;
 	}
+	public void repartir(int cantidadDeJugadores) {
+		this.cantidadDeJugadores=cantidadDeJugadores;
+		ArrayList<Jugador> jugadores=new ArrayList<Jugador>();
+		for(int i=0;i<cantidadDeJugadores;i++) {
+			jugadores.add(new Jugador(i));
+		}
+		ArrayList<Pais> lista=new ArrayList<Pais>();
+		lista.add(ALASKA);lista.add(ALBANIA);lista.add(ALEMANIA);lista.add(ARABIA);lista.add(ARGENTINA);lista.add(AUSTRALIA);
+		lista.add(BIELORUSIA);lista.add(BOLIVIA);lista.add(BRASIL);lista.add(CALIFORNIA);lista.add(CANADA);lista.add(CHECHENIA);
+		lista.add(CHICAGO);lista.add(CHILE);lista.add(CHINA);lista.add(CHURCHIL);lista.add(COLOMBIA);lista.add(COREA);lista.add(CROACIA);
+		lista.add(CUBA);lista.add(ELSALVADOR);lista.add(ESPAÑA);lista.add(FINLANDIA);lista.add(FLORIDA);lista.add(FRANCIA);lista.add(GRANBRETAÑA);
+		lista.add(GREOLANDIA);lista.add(HONDURAS);lista.add(INDIA);lista.add(IRAK);lista.add(IRAN);lista.add(IRLANDA);lista.add(ISLANDIA);lista.add(ISLAVICTORIA);
+		lista.add(ISRAEL);lista.add(ITALIA);lista.add(JAMAICA);lista.add(JAPON);lista.add(KAMCHATKA);lista.add(LABRADOR);lista.add(LASVEGAS);
+		lista.add(MALASIA);lista.add(MEXICO);lista.add(NICARAGUA);lista.add(NORUEGA);lista.add(NUEVA_ZELANDIA);lista.add(NUEVAYORK);
+		lista.add(OREGON);lista.add(PARAGUAY);lista.add(POLONIA);lista.add(PORTUGAL);lista.add(RUSIA);lista.add(SERBIA);lista.add(SIBERIA);
+		lista.add(TASMANIA);lista.add(TERRNOVA);lista.add(TURQUIA);lista.add(UCRANIA);lista.add(URUGUAY);lista.add(VENEZUELA);
+		lista.add(VIETNAM);
+		Random r=new Random();
+		
+		for(int i=0;i<lista.size();i++) {
+			for(int j=0;j<lista.size();j++) {
+				int f=r.nextInt(2);
+				if(f==0) {
+				Pais aux=lista.get(i);
+				lista.set(i,lista.get(j));
+				lista.set(j,aux);
+				}
+			}
+			
+			
+		}
+		
+	for(int i=0;i<lista.size();i++) {
+		lista.get(i).j=jugadores.get(i%jugadores.size());
+	}
+		
+		
+	}
+
 
 }

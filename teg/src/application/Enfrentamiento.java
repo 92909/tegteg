@@ -61,6 +61,9 @@ public class Enfrentamiento {
 		if (!a.pais.limita(d.pais)){
 			throw new Exception("no limita");
 		}
+		if(Main.turno!=d.pais.j.numero) {
+			throw new Exception("no es su turno");
+		}
 		
 		batalla = new Batalla(getEjercitoAtaque(), getEjercitoDefensa());
 		d.pais.cantidadDeFichas -= batalla.batallar();

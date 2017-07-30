@@ -1,7 +1,10 @@
-1235*1082 nueva zeal
-1244*849 austra
-1346*1044 tazmania
-48*58 alaska
-1232*778 sumatra
-
-270*938 arg
+paises.add(new VistaPais(100, 100, Pais.AUSTRALIA, "/VERDE/AUSTRALIA.png", 1244, 849));
+		paises.add(new VistaPais(100, 200, Pais.SUMATRA, "/AMARILLO/SUMATRA.png", 1212, 770));
+		paises.add(new VistaPais(300, 100, Pais.FINLANDIA, "/AZUL/FILIPINAS.png", 1340, 750));
+		paises.add(new VistaPais(300, 200, Pais.BOLIVIA, "/AZUL/TONGA.png", 1486, 799));
+		paises.add(new VistaPais(200, 300, Pais.TASMANIA, "/ROJO/TASMANIA.png", 1343, 1037));
+		paises.add(new VistaPais(200, 300, Pais.NUEVA_ZELANDIA, "/ROJO/NUEVA_ZELANDIA.png", 1223, 1074));
+		
+		paises.add(new VistaPais(200, 100, Pais.SUDAFRICA, "/AMARILLO/SUDAFRICA.png", 908, 907 ));
+		paises.add(new VistaPais(200, 100, Pais.SUDAFRICA, "/VERDE/SUDAFRICA.png", 908, 907 ));
+		paises.add(new VistaPais(300, 300, Pais.MAURITANIA, "/AZUL/MAURITANIA.png", 934, 863));
