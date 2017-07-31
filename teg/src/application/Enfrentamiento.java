@@ -6,6 +6,7 @@ public class Enfrentamiento {
 	VistaPais d;
 	Batalla batalla;
 	Carta c;
+	int carta=0;
 
 	public Enfrentamiento(VistaPais pais, VistaPais pais2, Carta carta) {
 		a = pais;
@@ -73,7 +74,7 @@ public class Enfrentamiento {
 			a.pais.tranferir(d.pais, 1);
 			d.pais.setJugador(a.pais.j);
 			d.setColor(d.pais.j);
-			
+			carta=1;
 		}
 		return batalla.batallar();
 	}

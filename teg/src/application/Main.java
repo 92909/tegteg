@@ -48,22 +48,27 @@ public class Main extends Application {
 
 				@Override
 				public void handle(MouseEvent event) {
+					
 					if("Reagrupar".equals(reagrupar.getText())){
 					activo = true;
 					reagrupar.setText("Fin turno");
 					}
 					else if("Fin turno".equals(reagrupar.getText())){
-						if(turno>Pais.cantidadDeJugadores) {
+						turno++;
+						if(turno>=teg.cantidadDeJugadores) {
 							turno=0;
 						}
-						turno++;
 						turn.setText(String.valueOf(turno));
 						
 						reagrupar.setText("Reagrupar");
+						activo=false;
+						if(teg.gano()) {
+						teg.entregar();
+						}
 					}
 
 				}
-
+				
 			};
 
 			reagrupar.setOnMouseClicked(reagr);

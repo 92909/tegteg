@@ -8,8 +8,8 @@ public class Teg {
 	List<VistaPais> paises = new ArrayList<>();
 	VistaPais pais1;
 	VistaPais pais2;
-	int cantidadDeJugadores=2;
-	
+	 int cantidadDeJugadores=2;
+	 Enfrentamiento enfrentamiento;
 	public Teg() {
 		paises.add(new VistaPais(100, 100, Pais.AUSTRALIA, "/VERDE/AUSTRALIA.png", 1224, 837));
 		paises.add(new VistaPais(100, 200, Pais.SUMATRA, "/NARANJA/SUMATRA.png", 1212, 770));
@@ -46,7 +46,7 @@ public class Teg {
 	}
 
 	public List<int[]> jugar() throws Exception {
-		Enfrentamiento enfrentamiento = new Enfrentamiento(pais1, pais2, new Carta("clasico"));
+	 enfrentamiento = new Enfrentamiento(pais1, pais2, new Carta("clasico"));
 		enfrentamiento.pelear();
 		List<int[]> list = new ArrayList<>();
 		list.add(enfrentamiento.batalla.jugador1);
@@ -58,5 +58,17 @@ public class Teg {
 	public int tirarMisil() throws Exception {
 		return pais1.pais.tirarMisil(pais2.pais);
 		
+	}
+	public boolean gano() {
+		if(enfrentamiento.carta==1) {
+			return true;
+		}
+			
+		return false;
+	}
+	public  Pais entregar() {
+		Pais entrega=paises.get(0).pais;
+		paises.remove(0);
+		return entrega;
 	}
 }

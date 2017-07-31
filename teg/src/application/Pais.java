@@ -93,7 +93,15 @@ public class Pais {
 		BRASIL.agregarLimite(VENEZUELA);
 		BRASIL.agregarLimite(COLOMBIA);
 		COLOMBIA.agregarLimite(VENEZUELA);
-
+		NUEVA_ZELANDIA.agregarLimite(TASMANIA);
+		TASMANIA.agregarLimite(AUSTRALIA);
+		AUSTRALIA.agregarLimite(SUMATRA);
+		AUSTRALIA.agregarLimite(FILIPINAS);
+		AUSTRALIA.agregarLimite(TONGA);
+		AUSTRALIA.agregarLimite(CHILE);
+		SUMATRA.agregarLimite(INDIA);
+		FILIPINAS.agregarLimite(VIETNAM );
+		TONGA.agregarLimite(CALIFORNIA);
 	}
 
 	String nombre;
@@ -102,6 +110,7 @@ public class Pais {
 	Jugador j;
 	int misiles;
 	static int cantidadDeJugadores;
+	String escudo="";
 
 	public Pais(int i) {
 		nombre = "pais";
