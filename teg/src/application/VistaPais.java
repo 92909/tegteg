@@ -19,12 +19,19 @@ public class VistaPais {
 	Text misiles;
 	
 	private String ruta;
+
+	Image image;
+
+	int posX;
+
+	int posY;
 	
 	public VistaPais(int centroX, int centroY, Pais pais, String ruta, int posX, int posY) {
 		this.pais = pais;
-		
+		this.posX = posX;
+		this.posY = posY;
 		this.ruta = ruta;
-		Image image = new Image(getClass().getResourceAsStream(ruta));
+		image = new Image(getClass().getResourceAsStream(ruta));
 		imagen = new ImageView(image);
 		imagen.setX(Main.offsetX+ posX*Main.escala);
 		imagen.setY(Main.offsetY+ posY*Main.escala);

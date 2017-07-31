@@ -1,5 +1,7 @@
 package application;
 
+import java.io.File;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import javafx.application.Application;
@@ -18,7 +20,10 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -36,6 +41,23 @@ public class Main extends Application {
 		try {
 			Image image = new Image(getClass().getResourceAsStream("/teg.jpg"));
 			ImageView imageView = new ImageView(image);
+			imageView.setOnScroll(new EventHandler<ScrollEvent>() {
+
+				@Override
+				public void handle(ScrollEvent event) {
+					escala = event.getDeltaY() < 0 ? escala*.95 : escala/.95;
+					imageView.setFitHeight(image.getHeight()*escala);
+					imageView.setFitWidth(image.getWidth()*escala);
+					
+					for (VistaPais vistaPais : teg.paises) {
+						vistaPais.imagen.setX(offsetX+ vistaPais.posX*escala);
+						vistaPais.imagen.setY(offsetY+ vistaPais.posY*escala);
+						vistaPais.imagen.setFitWidth(vistaPais.image.getWidth()*escala);
+						vistaPais.imagen.setFitHeight(vistaPais.image.getHeight()*escala);
+					}
+
+				}
+			});
 			imageView.setX(offsetX);
 			imageView.setY(offsetY);
 			imageView.setFitHeight(image.getHeight()*escala);
@@ -48,22 +70,27 @@ public class Main extends Application {
 
 				@Override
 				public void handle(MouseEvent event) {
+					
 					if("Reagrupar".equals(reagrupar.getText())){
 					activo = true;
 					reagrupar.setText("Fin turno");
 					}
 					else if("Fin turno".equals(reagrupar.getText())){
-						if(turno>Pais.cantidadDeJugadores) {
+						turno++;
+						if(turno>=teg.cantidadDeJugadores) {
 							turno=0;
 						}
-						turno++;
 						turn.setText(String.valueOf(turno));
 						
 						reagrupar.setText("Reagrupar");
+						activo=false;
+						if(teg.gano()) {
+						teg.entregar();
+						}
 					}
 
 				}
-
+				
 			};
 
 			reagrupar.setOnMouseClicked(reagr);
@@ -95,6 +122,14 @@ public class Main extends Application {
 					@Override
 					public void handle(MouseEvent event) {
 						((Glow)vistaPais.imagen.getEffect()).setLevel(.5);
+
+						try {
+							Media sound = new Media(new File(getClass().getResource("/Mousclik.wav").toURI()).toURI().toString());
+							MediaPlayer mediaPlayer = new MediaPlayer(sound);
+							mediaPlayer.play();
+						} catch (URISyntaxException e) {
+							e.printStackTrace();
+						}
 					}
 				});
 				vistaPais.imagen.setOnDragOver(new EventHandler<DragEvent>() {
@@ -194,6 +229,7 @@ public class Main extends Application {
 			primaryStage.setY(0);
 			primaryStage.setTitle("TEG");
 			primaryStage.setScene(scene);
+			primaryStage.setMaximized(true);
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
