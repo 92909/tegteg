@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Pais {
+	//AMERICA DEL SUR
 	static Pais ARGENTINA = new Pais("Argentina", 10);
 	static Pais BRASIL = new Pais("Brasil", 10);
 	static Pais URUGUAY = new Pais("Uruguay", 10);
@@ -12,14 +13,14 @@ public class Pais {
 	static Pais CHILE = new Pais("Chile", 10);
 	static Pais BOLIVIA = new Pais("Bolivia", 10);
 	static Pais VENEZUELA = new Pais("Venezuela", 10);
-
+	//AMERICA CENTRAL
 	static Pais NICARAGUA = new Pais("Nicaragua", 10);
 	static Pais ELSALVADOR = new Pais("El Salvador", 10);
 	static Pais JAMAICA = new Pais("Jamaica", 10);
 	static Pais HONDURAS = new Pais("Honduras", 10);
 	static Pais CUBA = new Pais("Cuba", 10);
 	static Pais MEXICO = new Pais("	Mexico", 10);
-
+	//AMERICA DEL NORTE
 	static Pais CALIFORNIA = new Pais("Paraguay", 10);
 	static Pais FLORIDA = new Pais("Paraguay", 10);
 	static Pais LASVEGAS = new Pais("Paraguay", 10);
@@ -32,7 +33,7 @@ public class Pais {
 	static Pais ISLAVICTORIA = new Pais("Paraguay", 10);
 	static Pais LABRADOR = new Pais("Paraguay", 10);
 	static Pais GREOLANDIA = new Pais("Paraguay", 10);
-
+	//EUROPA
 	static Pais ISLANDIA = new Pais("Paraguay", 10);
 	static Pais IRLANDA = new Pais("Paraguay", 10);
 	static Pais PORTUGAL = new Pais("Paraguay", 10);
@@ -49,7 +50,7 @@ public class Pais {
 	static Pais ALEMANIA = new Pais("Paraguay", 10);
 	static Pais FRANCIA = new Pais("Paraguay", 10);
 	static Pais ITALIA = new Pais("Paraguay", 10);
-
+	//ASIA
 	static Pais IRAK = new Pais("Paraguay", 10);
 	static Pais IRAN = new Pais("Paraguay", 10);
 	static Pais RUSIA = new Pais("Paraguay", 10);
@@ -66,14 +67,14 @@ public class Pais {
 	static Pais KAMCHATKA = new Pais("Paraguay", 10);
 	static Pais JAPON = new Pais("Paraguay", 10);
 	static Pais VIETNAM = new Pais("Paraguay", 10);
-	
+	//OCEANIA
 	static Pais AUSTRALIA = new Pais("Australia", 10);
 	static Pais NUEVA_ZELANDIA = new Pais("Nueva Zelandia", 10);
 	static Pais TASMANIA = new Pais("Tasmania", 10);
 	static Pais SUMATRA = new Pais("Sumatra", 10);
 	static Pais FILIPINAS = new Pais("Filipinas", 10);
 	static Pais TONGA = new Pais("Tonga", 10);
-	
+	//AFRICA
 	static Pais SUDAFRICA = new Pais("Sudafrica", 10);
 	static Pais MAURITANIA = new Pais("Mauritania", 10);;
 
