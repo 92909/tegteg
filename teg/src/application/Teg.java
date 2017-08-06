@@ -31,6 +31,7 @@ public class Teg {
 		paises.add(new VistaPais(300, 300, Pais.ISRAEL, "/AZUL/ISRAEL.png", 1089, 529));
 		paises.add(new VistaPais(300, 300, Pais.JAPON, "/AZUL/JAPON.png", 1456, 256));
 		paises.add(new VistaPais(300, 300, Pais.KAMCHATKA, "/AMARILLO/KAMCHATKA.png", 1306, 106));
+		paises.add(new VistaPais(300, 300, Pais.MALASIA, "/AMARILLO/MALASIA.png", 1306, 106));
 		
 		//AFRICA
 		paises.add(new VistaPais(200, 100, Pais.MAURITANIA, "/AMARILLO/MADAGASCAR.png", 1004, 862));
