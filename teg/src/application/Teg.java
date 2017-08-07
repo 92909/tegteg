@@ -31,7 +31,7 @@ public class Teg {
 		paises.add(new VistaPais(300, 300, Pais.ISRAEL, "/AZUL/ISRAEL.png", 1089, 529));
 		paises.add(new VistaPais(300, 300, Pais.JAPON, "/AZUL/JAPON.png", 1456, 256));
 		paises.add(new VistaPais(300, 300, Pais.KAMCHATKA, "/AMARILLO/KAMCHATKA.png", 1306, 106));
-		paises.add(new VistaPais(300, 300, Pais.MALASIA, "/AMARILLO/MALASIA.png", 1306, 106));
+	
 		
 		//AFRICA
 		paises.add(new VistaPais(200, 100, Pais.MAURITANIA, "/AMARILLO/MADAGASCAR.png", 1004, 862));
@@ -92,5 +92,23 @@ public class Teg {
 		Pais entrega=paises.get(0).pais;
 		paises.remove(0);
 		return entrega;
+	}
+	public boolean cartasIguales(ArrayList<Pais>paises) throws Exception {
+		if(paises.size()==3) {
+			return paises.get(0).escudo.valorCanje()==paises.get(1).escudo.valorCanje()
+					&&paises.get(0).escudo.valorCanje()==paises.get(2).escudo.valorCanje();
+		}
+		throw new Exception("Convinacion invalida");
+	}
+	public boolean canjear(ArrayList<Pais>paises) throws Exception {
+		int total=0;
+		for(int i=0;i<paises.size();i++) {
+			total+=paises.get(i).escudo.valorCanje();
+		}
+		
+		if(total==7||cartasIguales(paises)) {
+			return true;
+		}
+		return false;
 	}
 }

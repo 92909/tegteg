@@ -63,9 +63,20 @@ public class Main extends Application {
 			imageView.setFitHeight(image.getHeight()*escala);
 			imageView.setFitWidth(image.getWidth()*escala);
 			Button reagrupar = new Button("Reagrupar");
+			Button can = new Button("Cartas");
 			Label turn=new Label();
 			
 			turn.setLayoutX(100);
+			EventHandler<MouseEvent> canjear = new EventHandler<MouseEvent>() {
+					
+				@Override
+				public void handle(MouseEvent event) {
+				
+					
+				}
+			};
+		
+			
 			EventHandler<MouseEvent> reagr = new EventHandler<MouseEvent>() {
 
 				@Override
@@ -224,6 +235,7 @@ public class Main extends Application {
 			list.add(resultados);
 			list.add(reagrupar);
 			list.add(turn);
+			list.add(can);
 			Scene scene = new Scene(group, 1000, 600);
 			primaryStage.setX(0);
 			primaryStage.setY(0);

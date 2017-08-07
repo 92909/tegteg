@@ -1,6 +1,9 @@
 package application;
 
+import java.util.ArrayList;
+
 public class Jugador  {
+	ArrayList<Pais> CartasPais=new ArrayList<Pais>();
 	String nombre;
 	int numero;
 	public Jugador(int i) {
