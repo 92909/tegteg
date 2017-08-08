@@ -2,8 +2,8 @@ package application;
 
 public class Enfrentamiento {
 	
-	VistaPais a;
-	VistaPais d;
+	public VistaPais a;
+	public VistaPais d;
 	Batalla batalla;
 	Carta c;
 	int carta=0;

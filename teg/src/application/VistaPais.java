@@ -6,9 +6,9 @@ import javafx.scene.text.Text;
 
 public class VistaPais {
 	
-	static String[] colores = { "AMARILLO", "AZUL", "CELESTE", "NARANJA", "ROJO", "VERDE"};
+	public static String[] colores = { "AMARILLO", "AZUL", "CELESTE", "NARANJA", "ROJO", "VERDE"};
 
-	Pais pais;
+	public Pais pais;
 	
 	ImageView imagen;
 	

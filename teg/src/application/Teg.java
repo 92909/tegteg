@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Teg {
 
-	List<VistaPais> paises = new ArrayList<>();
+	public static List<VistaPais> paises = new ArrayList<>();
 	VistaPais pais1;
 	VistaPais pais2;
 	 int cantidadDeJugadores=2;
@@ -92,6 +92,16 @@ public class Teg {
 		Pais entrega=paises.get(0).pais;
 		paises.remove(0);
 		return entrega;
+	}
+	
+	public static int paisesDel(Jugador jugador){
+		int cant = 0;
+		for (VistaPais vistaPais : Teg.paises){
+			if (vistaPais.pais.getJugador().equals(jugador)){
+				cant++;
+			}
+		}
+		return cant;
 	}
 	public boolean cartasIguales(ArrayList<Pais>paises) throws Exception {
 		if(paises.size()==3) {
