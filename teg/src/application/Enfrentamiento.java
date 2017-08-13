@@ -62,7 +62,7 @@ public class Enfrentamiento {
 		if (!a.pais.limita(d.pais)){
 			throw new Exception("no limita");
 		}
-		if(Main.turno!=d.pais.j.numero) {
+		if(Main.turno!=a.pais.j.numero) {
 			throw new Exception("no es su turno");
 		}
 		
