@@ -26,13 +26,13 @@ public class Pais {
 	static Pais LASVEGAS = new Pais("Paraguay", 10);
 	static Pais CHICAGO = new Pais("Paraguay", 10);
 	static Pais OREGON = new Pais("Paraguay", 10);
-	static Pais TERRNOVA = new Pais("Paraguay", 10);
+	static Pais TERRANOVA = new Pais("Paraguay", 10);
 	static Pais CANADA = new Pais("Paraguay", 10);
 	static Pais NUEVAYORK = new Pais("Paraguay", 10);
 	static Pais ALASKA = new Pais("Paraguay", 10);
 	static Pais ISLAVICTORIA = new Pais("Paraguay", 10);
 	static Pais LABRADOR = new Pais("Paraguay", 10);
-	static Pais GREOLANDIA = new Pais("Paraguay", 10);
+	static Pais GROENLANDIA = new Pais("Paraguay", 10);
 	// EUROPA
 	static Pais ISLANDIA = new Pais("Paraguay", 10);
 	static Pais IRLANDA = new Pais("Paraguay", 10);
@@ -50,6 +50,7 @@ public class Pais {
 	static Pais ALEMANIA = new Pais("Paraguay", 10);
 	static Pais FRANCIA = new Pais("Paraguay", 10);
 	static Pais ITALIA = new Pais("Paraguay", 10);
+	
 	// ASIA
 	static Pais IRAK = new Pais("Paraguay", 10);
 	static Pais IRAN = new Pais("Paraguay", 10);
@@ -101,6 +102,7 @@ public class Pais {
 		BOLIVIA.agregarLimite(PARAGUAY);
 		BRASIL.agregarLimite(VENEZUELA);
 		BRASIL.agregarLimite(COLOMBIA);
+		BRASIL.agregarLimite(PARAGUAY);
 		COLOMBIA.agregarLimite(VENEZUELA);
 		
 		//OCEANIA
@@ -108,7 +110,7 @@ public class Pais {
 		AUSTRALIA.agregarLimite(SUMATRA);
 		AUSTRALIA.agregarLimite(FILIPINAS);
 		AUSTRALIA.agregarLimite(TONGA);
-		AUSTRALIA.agregarLimite(CHILE);
+		AUSTRALIA.agregarLimite(CHILE);			//OCEANIA-AMERICA DEL SUR
 		SUMATRA.agregarLimite(INDIA);			//OCEANIA-ASIA
 		FILIPINAS.agregarLimite(VIETNAM );		//OCEANIA-ASIA
 		TONGA.agregarLimite(CALIFORNIA);
@@ -170,7 +172,68 @@ public class Pais {
 		RUSIA.agregarLimite (SIBERIA);
 		RUSIA.agregarLimite (CHECHENIA);
 		SIBERIA.agregarLimite (CHECHENIA);
+		IRAK.agregarLimite (ALBANIA);			//ASIA-EUROPA
+		IRAK.agregarLimite (IRAN);
+		IRAN.agregarLimite (UCRANIA);			//ASIA-EUROPA
 		
+		//EUROPA
+		ALBANIA.agregarLimite (POLONIA);
+		ALBANIA.agregarLimite (UCRANIA);
+		UCRANIA.agregarLimite (POLONIA);
+		UCRANIA.agregarLimite (BIELORUSIA);
+		POLONIA.agregarLimite (CROACIA);
+		POLONIA.agregarLimite (SERBIA);
+		POLONIA.agregarLimite (ALEMANIA);
+		POLONIA.agregarLimite (BIELORUSIA);
+		BIELORUSIA.agregarLimite (FINLANDIA);
+		CROACIA.agregarLimite (ITALIA);
+		CROACIA.agregarLimite (ALEMANIA);
+		CROACIA.agregarLimite (SERBIA);
+		SERBIA.agregarLimite (ALEMANIA);
+		FINLANDIA.agregarLimite (NORUEGA);
+		ITALIA.agregarLimite (FRANCIA);
+		ITALIA.agregarLimite (ALEMANIA);
+		ALEMANIA.agregarLimite (FRANCIA);
+		ALEMANIA.agregarLimite (GRANBRETAÑA);
+		FRANCIA.agregarLimite (ESPAÑA);
+		ESPAÑA.agregarLimite (PORTUGAL);
+		ISLANDIA.agregarLimite (NORUEGA);
+		ISLANDIA.agregarLimite (IRLANDA);
+		ISLANDIA.agregarLimite (GROENLANDIA);		//EUROPA-AMERICA DEL NORTE
+		IRLANDA.agregarLimite (GRANBRETAÑA);
+		GRANBRETAÑA.agregarLimite (PORTUGAL);
+		
+		//AMERICA DEL NORTE
+		GROENLANDIA.agregarLimite (ISLAVICTORIA);
+		GROENLANDIA.agregarLimite (LABRADOR);
+		GROENLANDIA.agregarLimite (NUEVAYORK);
+		NUEVAYORK.agregarLimite (CHICAGO);
+		CHICAGO.agregarLimite (TERRANOVA);
+		CHICAGO.agregarLimite (OREGON);
+		CHICAGO.agregarLimite (LASVEGAS);
+		CHICAGO.agregarLimite (FLORIDA);
+		FLORIDA.agregarLimite (LASVEGAS);
+		FLORIDA.agregarLimite (CALIFORNIA);
+		FLORIDA.agregarLimite (CUBA);				//AMERICA DEL NORTE-AMERICA CENTAL
+		CALIFORNIA.agregarLimite (MEXICO);			//AMERICA DEL NORTE-AMERICA CENTAL
+		CALIFORNIA.agregarLimite (LASVEGAS);
+		LASVEGAS.agregarLimite (OREGON);
+		OREGON.agregarLimite (TERRANOVA);
+		OREGON.agregarLimite (CANADA);
+		TERRANOVA.agregarLimite (LABRADOR);
+		TERRANOVA.agregarLimite (CANADA);
+		ALASKA.agregarLimite (CANADA);
+		CANADA.agregarLimite (ISLAVICTORIA);
+		
+		//AMERICA CENTRAL
+		MEXICO.agregarLimite (HONDURAS);
+		MEXICO.agregarLimite (CUBA);
+		HONDURAS.agregarLimite (ELSALVADOR);
+		HONDURAS.agregarLimite (CUBA);
+		NICARAGUA.agregarLimite (ELSALVADOR);
+		NICARAGUA.agregarLimite (JAMAICA);
+		NICARAGUA.agregarLimite (COLOMBIA);			//AMERICA CENTRAL-AMERICA DEL SUR
+		JAMAICA.agregarLimite (CUBA);
 	}
 
 	String nombre;
@@ -309,7 +372,7 @@ public class Pais {
 		lista.add(CHICAGO);
 		lista.add(CHILE);
 		lista.add(CHINA);
-		lista.add(CHURCHIL);
+		lista.add(CHUKCHI);
 		lista.add(COLOMBIA);
 		lista.add(COREA);
 		lista.add(CROACIA);
@@ -320,7 +383,7 @@ public class Pais {
 		lista.add(FLORIDA);
 		lista.add(FRANCIA);
 		lista.add(GRANBRETAÑA);
-		lista.add(GREOLANDIA);
+		lista.add(GROENLANDIA);
 		lista.add(HONDURAS);
 		lista.add(INDIA);
 		lista.add(IRAK);
@@ -349,7 +412,7 @@ public class Pais {
 		lista.add(SERBIA);
 		lista.add(SIBERIA);
 		lista.add(TASMANIA);
-		lista.add(TERRNOVA);
+		lista.add(TERRANOVA);
 		lista.add(TURQUIA);
 		lista.add(UCRANIA);
 		lista.add(URUGUAY);

@@ -47,13 +47,13 @@ public class VistaPais {
 
 	
 	public void setColor(Jugador j) {
-//		for (String color : colores){
-//			if (ruta.contains(color)){
-//				ruta = ruta.replace(color, colores[j.numero]);
-//				break;
-//			}
-//		}
-//		imagen.setImage(new Image(getClass().getResourceAsStream(ruta)));
+		for (String color : colores){
+			if (ruta.contains(color)){
+				ruta = ruta.replace(color, colores[j.numero]);
+				break;
+			}
+		}
+		imagen.setImage(new Image(getClass().getResourceAsStream(ruta)));
 		
 	}
 }
