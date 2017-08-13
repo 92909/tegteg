@@ -1,6 +1,6 @@
 package continentes;
 
-public class AmericaDelNorte extends Continente{
+public final class AmericaDelNorte extends Continente{
 
 	public static final AmericaDelNorte AMERICA_DEL_NORTE = new AmericaDelNorte();
 	

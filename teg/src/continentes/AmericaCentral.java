@@ -1,6 +1,6 @@
 package continentes;
 
-public class AmericaCentral extends Continente{
+public final class AmericaCentral extends Continente{
 
 	public static final AmericaCentral AMERICA_CENTRAL = new AmericaCentral();
 	

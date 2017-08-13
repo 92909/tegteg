@@ -9,7 +9,7 @@ public class Batalla {
 		this.jugador2 = ordenar(is2);
 	}
 
-	public int[] ordenar(int[] vector) {
+	private int[] ordenar(int[] vector) {
 
 		for (int i = 0; i < vector.length; i++) {
 			for (int j = i + 1; j < vector.length; j++) {

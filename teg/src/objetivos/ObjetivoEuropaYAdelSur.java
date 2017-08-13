@@ -5,7 +5,7 @@ import application.Jugador;
 import continentes.AmericaDelSur;
 import continentes.Europa;
 
-public class ObjetivoEuropaYAdelSur extends Objetivo {
+public final class ObjetivoEuropaYAdelSur extends Objetivo {
 
 	@Override
 	public boolean objetivoPersonalCumplido(Enfrentamiento enfrentamiento) {

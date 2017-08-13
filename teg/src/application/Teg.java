@@ -24,9 +24,9 @@ public class Teg {
 		paises.add(new VistaPais(200, 300, Pais.ARABIA, "/AZUL/ARABIA.png", 1129, 628));
 		paises.add(new VistaPais(200, 300, Pais.CHECHENIA, "/ROJO/CHECHENIA.png", 1168, 136));
 		paises.add(new VistaPais(200, 300, Pais.CHINA, "/AMARILLO/CHINA.png", 1229, 29));
-		paises.add(new VistaPais(200, 300, Pais.CHURCHIL, "/NARANJA/CHUKCHI.png", 1287, 69));
+		paises.add(new VistaPais(200, 300, Pais.CHURCHIL, "/NARANJA/CHUKCHI.png", 1294, 55));
 		paises.add(new VistaPais(200, 300, Pais.COREA, "/CELESTE/COREA.png", 1326, 327));
-//		paises.add(new VistaPais(200, 300, Pais.IRAK, "/CELESTE/IRAK.png", 1056, 444));
+		paises.add(new VistaPais(200, 300, Pais.IRAK, "/CELESTE/IRAK.png", 1056, 444));
 		paises.add(new VistaPais(300, 300, Pais.IRAN, "/AZUL/IRAN.png", 1107, 363));
 		paises.add(new VistaPais(300, 300, Pais.ISRAEL, "/AZUL/ISRAEL.png", 1089, 529));
 		paises.add(new VistaPais(300, 300, Pais.JAPON, "/AZUL/JAPON.png", 1456, 256));

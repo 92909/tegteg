@@ -6,7 +6,7 @@ import continentes.Africa;
 import continentes.AmericaDelNorte;
 import continentes.Oceania;
 
-public class ObjetivoAdelNorteOceaniaY5Africa extends Objetivo {
+public final class ObjetivoAdelNorteOceaniaY5Africa extends Objetivo {
 
 	public static final ObjetivoAdelNorteOceaniaY5Africa OBJETIVO_ADEL_NORTE_OCEANIA_Y5_AFRICA = new ObjetivoAdelNorteOceaniaY5Africa(); 
 	

@@ -2,14 +2,16 @@ package application;
 
 import java.util.Random;
 
-public class Dado {
-	static int[] cara={1,2,3,4,5,6};
+public final class Dado {
+	
+	private static int caras=6;
+	private static Random ran=new Random();
 
 	public static int tirar() {
-		Random ran=new Random();
-		return cara[ran.nextInt(cara.length)];
-		
-		
+		return ran.nextInt(caras+1);
+	}
+	
+	private Dado(){
 	}
 
 }

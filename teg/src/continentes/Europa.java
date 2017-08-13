@@ -1,6 +1,6 @@
 package continentes;
 
-public class Europa extends Continente{
+public final class Europa extends Continente{
 	
 	public static final Europa EUROPA = new Europa();
 

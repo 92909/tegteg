@@ -112,7 +112,7 @@ public class Pais {
 	int misiles;
 	static int cantidadDeJugadores;
 	Escudo escudo;
-	ArrayList<Pais> lista = new ArrayList<Pais>();
+	static ArrayList<Pais> lista = new ArrayList<Pais>();
 
 	public Pais(int i) {
 		nombre = "pais";

@@ -3,7 +3,7 @@ package objetivos;
 import application.Enfrentamiento;
 import application.Teg;
 
-public class Objetivo35Paises extends Objetivo {
+public final class Objetivo35Paises extends Objetivo {
 
 	@Override
 	public boolean objetivoPersonalCumplido(Enfrentamiento enfrentamiento) {

@@ -1,6 +1,6 @@
 package continentes;
 
-public class Oceania extends Continente{
+public final class Oceania extends Continente{
 	
 	public static final Oceania OCEANIA = new Oceania();
 	

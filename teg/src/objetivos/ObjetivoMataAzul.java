@@ -5,7 +5,7 @@ import application.Jugador;
 import application.Teg;
 import application.VistaPais;
 
-public class ObjetivoMataAzul extends Objetivo {
+public final class ObjetivoMataAzul extends Objetivo {
 
 	@Override
 	public boolean objetivoPersonalCumplido(Enfrentamiento enfrentamiento) {
