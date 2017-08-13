@@ -60,7 +60,7 @@ public class Pais {
 	static Pais ISRAEL = new Pais("Paraguay", 10);
 	static Pais TURQUIA = new Pais("Paraguay", 10);
 	static Pais CHINA = new Pais("Paraguay", 10);
-	static Pais CHURCHIL = new Pais("Paraguay", 10);
+	static Pais CHUKCHI = new Pais("Paraguay", 10);
 	static Pais INDIA = new Pais("Paraguay", 10);
 	static Pais MALASIA = new Pais("Paraguay", 10);
 	static Pais COREA = new Pais("Paraguay", 10);
@@ -76,9 +76,17 @@ public class Pais {
 	static Pais TONGA = new Pais("Tonga", 10);
 	// AFRICA
 	static Pais SUDAFRICA = new Pais("Sudafrica", 10);
-	static Pais MAURITANIA = new Pais("Mauritania", 10);;
-
+	static Pais MAURITANIA = new Pais("Mauritania", 10);
+	static Pais ANGOLA = new Pais("Angola", 10);
+	static Pais MADAGASCAR = new Pais("Madagascar", 10);
+	static Pais NIGERIA = new Pais("Nigeria", 10);
+	static Pais ETIOPIA = new Pais("Etiopia", 10);
+	static Pais EGIPTO = new Pais("Egipto", 10);
+	static Pais SAHARA = new Pais("Sahara", 10);
+	
 	static {
+		
+		//AMERICA DEL SUR
 		ARGENTINA.agregarLimite(BRASIL);
 		ARGENTINA.agregarLimite(URUGUAY);
 		ARGENTINA.agregarLimite(BOLIVIA);
@@ -94,15 +102,75 @@ public class Pais {
 		BRASIL.agregarLimite(VENEZUELA);
 		BRASIL.agregarLimite(COLOMBIA);
 		COLOMBIA.agregarLimite(VENEZUELA);
+		
+		//OCEANIA
 		NUEVA_ZELANDIA.agregarLimite(TASMANIA);
-		TASMANIA.agregarLimite(AUSTRALIA);
 		AUSTRALIA.agregarLimite(SUMATRA);
 		AUSTRALIA.agregarLimite(FILIPINAS);
 		AUSTRALIA.agregarLimite(TONGA);
 		AUSTRALIA.agregarLimite(CHILE);
-		SUMATRA.agregarLimite(INDIA);
-		FILIPINAS.agregarLimite(VIETNAM);
+		SUMATRA.agregarLimite(INDIA);			//OCEANIA-ASIA
+		FILIPINAS.agregarLimite(VIETNAM );		//OCEANIA-ASIA
 		TONGA.agregarLimite(CALIFORNIA);
+		TASMANIA.agregarLimite(AUSTRALIA);
+		
+		//AFRICA
+		MADAGASCAR.agregarLimite (SUDAFRICA);
+		MADAGASCAR.agregarLimite (MAURITANIA);
+		MADAGASCAR.agregarLimite (EGIPTO);
+		SUDAFRICA.agregarLimite (MAURITANIA);
+		SUDAFRICA.agregarLimite (NIGERIA);
+		MAURITANIA.agregarLimite (ANGOLA);
+		MAURITANIA.agregarLimite (NIGERIA);
+		ANGOLA.agregarLimite (NIGERIA);
+		ANGOLA.agregarLimite (ETIOPIA);
+		NIGERIA.agregarLimite (ETIOPIA);		
+		NIGERIA.agregarLimite (SAHARA);
+		NIGERIA.agregarLimite (URUGUAY);		//AFRICA-AMERICA DEL SUR
+		ETIOPIA.agregarLimite (EGIPTO);
+		ETIOPIA.agregarLimite (SAHARA);
+		EGIPTO.agregarLimite (SAHARA);
+		EGIPTO.agregarLimite (POLONIA);			//AFRICA-EUROPA
+		EGIPTO.agregarLimite (IRAK);			//AFRICA-ASIA
+		EGIPTO.agregarLimite (ISRAEL);			//AFRICA-ASIA
+		SAHARA.agregarLimite (BRASIL);			//AFRICA-AMERICA DEL SUR
+		SAHARA.agregarLimite (ESPAÑA);			//AFRICA-EUROPA
+		
+		//ASIA
+		VIETNAM.agregarLimite (INDIA);
+		VIETNAM.agregarLimite (MALASIA);
+		VIETNAM.agregarLimite (COREA);
+		COREA.agregarLimite (MALASIA);
+		COREA.agregarLimite (CHINA);
+		COREA.agregarLimite (KAMCHATKA);
+		COREA.agregarLimite (JAPON);
+		KAMCHATKA.agregarLimite (CHINA);
+		KAMCHATKA.agregarLimite (JAPON);
+		KAMCHATKA.agregarLimite (CHUKCHI);
+		KAMCHATKA.agregarLimite (ALASKA);		//ASIA-AMERICA DEL NORTE
+		CHUKCHI.agregarLimite (ALASKA);			//ASIA-AMERICA DEL NORTE
+		CHUKCHI.agregarLimite (CHINA);
+		INDIA.agregarLimite (TURQUIA);
+		INDIA.agregarLimite (CHINA);
+		INDIA.agregarLimite (MALASIA);
+		MALASIA.agregarLimite (CHINA);
+		MALASIA.agregarLimite (COREA);
+		CHINA.agregarLimite (TURQUIA);
+		CHINA.agregarLimite (RUSIA);
+		CHINA.agregarLimite (CHECHENIA);
+		CHINA.agregarLimite (SIBERIA);
+		ARABIA.agregarLimite (ISRAEL);
+		ISRAEL.agregarLimite (TURQUIA);
+		ISRAEL.agregarLimite (IRAK);
+		TURQUIA.agregarLimite (IRAK);
+		TURQUIA.agregarLimite (IRAN);
+		TURQUIA.agregarLimite (RUSIA);
+		RUSIA.agregarLimite (IRAN);
+		RUSIA.agregarLimite (UCRANIA);			//ASIA-EUROPA
+		RUSIA.agregarLimite (SIBERIA);
+		RUSIA.agregarLimite (CHECHENIA);
+		SIBERIA.agregarLimite (CHECHENIA);
+		
 	}
 
 	String nombre;
