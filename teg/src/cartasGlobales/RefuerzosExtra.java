@@ -1,8 +1,6 @@
 package cartasGlobales;
 
-import application.Jugador;
-
-public final class RefuerzosExtra implements CartaGlobal {
+public final class RefuerzosExtra extends CartaGlobal {
 
 	static {
 		for (int i=0; i<4; i++){
@@ -11,36 +9,6 @@ public final class RefuerzosExtra implements CartaGlobal {
 	}
 	
 	private RefuerzosExtra() {
-	}
-	
-	@Override
-	public int beneficioDefensa() {
-		return 0;
-	}
-
-	@Override
-	public int beneficioAtaque() {
-		return 0;
-	}
-
-	@Override
-	public boolean estaDescansando(Jugador jugador) {
-		return false;
-	}
-
-	@Override
-	public boolean soloIntercontinental() {
-		return false;
-	}
-
-	@Override
-	public boolean soloContinental() {
-		return false;
-	}
-
-	@Override
-	public boolean crisis() {
-		return false;
 	}
 
 	@Override

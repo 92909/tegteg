@@ -5,21 +5,35 @@ import java.util.List;
 
 import application.Jugador;
 
-public interface CartaGlobal {
+public abstract class CartaGlobal {
 	
 	public static final List<CartaGlobal> CARTA_GLOBALS = new ArrayList<>();
 
-	int beneficioDefensa();
-	
-	int beneficioAtaque();
-	
-	boolean estaDescansando(Jugador jugador);
-	
-	boolean soloIntercontinental();
-	
-	boolean soloContinental();
-	
-	boolean crisis();
-	
-	boolean refuerzosExtra();
+	public int beneficioDefensa() {
+		return 0;
+	}
+
+	public int beneficioAtaque() {
+		return 0;
+	}
+
+	public boolean estaDescansando(Jugador jugador) {
+		return false;
+	}
+
+	public boolean soloIntercontinental() {
+		return false;
+	}
+
+	public boolean soloContinental() {
+		return false;
+	}
+
+	public boolean crisis() {
+		return false;
+	}
+
+	public boolean refuerzosExtra() {
+		return false;
+	}
 }
