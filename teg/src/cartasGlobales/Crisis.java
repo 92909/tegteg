@@ -1,14 +1,8 @@
 package cartasGlobales;
 
 public final class Crisis extends CartaGlobal {
-
-	static {
-		for (int i=0; i<4; i++){
-			CARTA_GLOBALS.add(new Crisis());
-		}
-	}
 	
-	private Crisis() {
+	Crisis() {
 	}
 
 	@Override

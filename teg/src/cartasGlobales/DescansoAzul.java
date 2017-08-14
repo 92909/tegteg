@@ -4,12 +4,8 @@ import application.Jugador;
 import application.VistaPais;
 
 public final class DescansoAzul extends CartaGlobal {
-
-	static {
-		CARTA_GLOBALS.add(new DescansoAzul());
-	}
 	
-	private DescansoAzul() {
+	DescansoAzul() {
 	}
 
 	@Override
