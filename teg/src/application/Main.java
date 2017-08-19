@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,7 +30,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-	public static double offsetX = 200;
+	public static double offsetX = 0;
 	public static double offsetY = 0;
 	public static double escala = .5;
 	
@@ -106,6 +107,7 @@ public class Main extends Application {
 
 			reagrupar.setOnMouseClicked(reagr);
 			Group group = new Group(imageView);
+			ScrollPane scrollPane = new ScrollPane(group);
 			ObservableList<Node> list = group.getChildren();
 			Text evento = new Text(1000, 100, "");
 			Text resultados = new Text(1000, 200, "");
@@ -236,7 +238,7 @@ public class Main extends Application {
 			list.add(reagrupar);
 			list.add(turn);
 			list.add(can);
-			Scene scene = new Scene(group, 1000, 600);
+			Scene scene = new Scene(scrollPane, 1000, 600);
 			primaryStage.setX(0);
 			primaryStage.setY(0);
 			primaryStage.setTitle("TEG");
