@@ -137,7 +137,7 @@ public class Main extends Application {
 						((Glow)vistaPais.imagen.getEffect()).setLevel(.5);
 
 						try {
-							Media sound = new Media(new File(getClass().getResource("/Mousclik.wav").toURI()).toURI().toString());
+							Media sound = new Media(Main.class.getResource("/Mousclik.wav").toURI().toString());
 							MediaPlayer mediaPlayer = new MediaPlayer(sound);
 							mediaPlayer.play();
 						} catch (URISyntaxException e) {
