@@ -18,9 +18,6 @@ public class Jugador  {
 		this.numero = numero;
 	}
 
-	public void setColor(int numero) {
-		this.numero = numero;
-	}
 	public String getNombre() {
 		return nombre;
 	}

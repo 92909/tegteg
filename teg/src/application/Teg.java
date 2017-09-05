@@ -6,6 +6,7 @@ import java.util.List;
 public class Teg {
 
 	public static List<VistaPais> paises = new ArrayList<>();
+	public static List<Jugador> jugadores = new ArrayList<>();
 	VistaPais pais1;
 	VistaPais pais2;
 	 int cantidadDeJugadores=2;
