@@ -8,7 +8,7 @@ public final class Dado {
 	private static Random ran=new Random();
 
 	public static int tirar() {
-		return ran.nextInt(caras+1);
+		return ran.nextInt(caras)+1;
 	}
 	
 	private Dado(){
