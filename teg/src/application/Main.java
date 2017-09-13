@@ -1,6 +1,5 @@
 package application;
 
-import java.io.File;
 import java.net.URISyntaxException;
 import java.util.List;
 
@@ -13,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,6 +23,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
@@ -40,6 +41,24 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			GridPane gridJugadores = new GridPane();
+			Group groupJugadores = new Group(gridJugadores);
+			List<Node> nombres = groupJugadores.getChildren();
+			Scene sceneJugadores = new Scene(groupJugadores);
+			Button agregarJugador = new Button("Agregar Jugador");
+			nombres.add(agregarJugador);
+			agregarJugador.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+				@Override
+				public void handle(MouseEvent event) {
+					TextField textField = new TextField();
+					gridJugadores.add(textField, 0, gridJugadores.getChildren().size());
+					
+					
+				}
+			});
+			Button empezar= new Button("Empezar");
+			nombres.add(empezar);
 			Image image = new Image(getClass().getResourceAsStream("/teg.jpg"));
 			ImageView imageView = new ImageView(image);
 			imageView.setOnScroll(new EventHandler<ScrollEvent>() {
@@ -89,7 +108,7 @@ public class Main extends Application {
 					}
 					else if("Fin turno".equals(reagrupar.getText())){
 						turno++;
-						if(turno>=teg.cantidadDeJugadores) {
+						if(turno>=teg.jugadores.size()) {
 							turno=0;
 						}
 						turn.setText(String.valueOf(turno));
@@ -242,9 +261,33 @@ public class Main extends Application {
 			primaryStage.setX(0);
 			primaryStage.setY(0);
 			primaryStage.setTitle("TEG");
-			primaryStage.setScene(scene);
-			primaryStage.setMaximized(true);
+			primaryStage.setScene(sceneJugadores);
 			primaryStage.show();
+			
+			empezar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+				@Override
+				public void handle(MouseEvent event) {
+					
+					for(int i=0;i<gridJugadores.getChildren().size();i++){
+						
+						Teg.jugadores.add(new Jugador(i));
+						
+					}
+					
+					for(int i=0;i<Teg.paises.size();i++){
+						
+						Teg.paises.get(i).pais.j = Teg.jugadores.get(i%Teg.jugadores.size());
+						
+						
+						Teg.paises.get(i).setColor(Teg.jugadores.get(i%Teg.jugadores.size()));
+						
+					}
+					
+					primaryStage.setScene(scene);
+					primaryStage.setMaximized(true);
+				}
+			});
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
